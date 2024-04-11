@@ -9,6 +9,8 @@ format:
     chalkboard: true
     code-annotations: hover
     echo: true
+    message: false
+    warning: false
 editor: visual
 ---
 
@@ -171,7 +173,28 @@ Os pacotes que fazem parte desse universo são:
 
 # Base de dados
 
-É importante dizer que há várias formas da gente conseguir encontrar bases de dados são várias, inclusive por meio de pacotes. Te convido a conhecer o pacote [**basedosdados**](https://basedosdados.org/) e desbravar as várias bases de dados disponíveis, mas hoje, nós vamos utilizar o banco de dados **iris** que é do pacote **datasets**.
+É importante dizer que há várias formas da gente conseguir encontrar bases de dados são várias, inclusive por meio de pacotes. Te convido a conhecer o pacote [**basedosdados**](https://basedosdados.org/) e desbravar as várias bases de dados disponíveis, mas hoje, nós vamos utilizar o banco de dados **CO2** que é do pacote **datasets**.
+
+```{r}
+library(datasets)
+```
+
+## Carbon Dioxide Uptake in Grass Plants
+
+A absorção de $CO_{2}$ por seis plantas de Quebec e seis plantas do Mississippi foi medida em vários níveis de concentração ambiental. Metade das plantas de cada tipo foram resfriadas durante a noite antes da realização do experimento. Este conjunto de dados fazia originalmente parte do pacote nlme e possui métodos para suas classes de dados agrupados.
+
+```{r}
+dados_Carbon <- datasets::CO2
+head(dados_Carbon,3)
+```
+
+## 
+
+
+
+
+
+
 
 
 # rename()
