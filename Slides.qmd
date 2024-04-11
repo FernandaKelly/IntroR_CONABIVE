@@ -135,25 +135,27 @@ Essa etapa do curso vai ser de muita troca e **live coding**. Vamos aprender as 
 
 # Step 2 {background-color="#FDE962"}
 
-# 
+# {background-image="img/tidyverse-default.png"}
 
-![](img/tidyverse-default.png)
 
 #
 
-O universo Tidyverse é basicamente uma coleção de pacotes voltados a ciência de dados. 
+O universo **Tidyverse** é basicamente uma coleção de pacotes voltados a ciência de dados. 
 
 
--   Estes pacotes tem filosofia, gramática e estruturas de dados  em comum (criadas para um pacote trabalhar em conjunto com o outro além de que quando voce aprende a usar um pacote, aprender a usar os outros pacotes do tidyverse se torna muito mais tranquilo)
+-   Estes pacotes tem filosofia, gramática e estruturas de dados  em comum, ou seja, foram criadas para um pacote poder trabalhar em conjunto com o outro. 
 
-#
+# {background-color="black"}
 
-Facilita MUITOOO o trabalho da pessoa que trabalha com dados
+Os pacotes que fazem parte desse universo são: 
 
-#
+![](img/tidyverse_pacotes.jpeg)
 
-- Funções que vamos aprender:
+# {background-image="img/tidyverse_forma.png"}
 
+# Dplyr
+
+## Funções que vamos aprender
 
 
 - rename(); distinct(); select();  
@@ -164,7 +166,26 @@ Facilita MUITOOO o trabalho da pessoa que trabalha com dados
 
 - sample_frac(); sample_n().
 
-##
+# Mas antes de tudo...
+# ... precisamos de uma base de dados!
+
+# Base de dados
+
+É importante dizer que há várias formas da gente conseguir encontrar bases de dados são várias, inclusive por meio de pacotes. Te convido a conhecer o pacote [**basedosdados**](https://basedosdados.org/) e desbravar as várias bases de dados disponíveis, mas hoje, nós vamos utilizar o banco de dados **iris** que é do pacote **datasets**.
+
+
+# rename()
+# distinct()
+# select()
+# filter()
+# mutate()
+# transmute()
+# arrange()
+# summarise()
+# group_by()
+# sample_frac()
+# sample_n()
+
 
 # Teste de Hipóteses
 
