@@ -38,11 +38,15 @@ Eu sou uma mulher preta com **coragem** e que fez (e ainda faz) uma boa limonada
 
 # E sabe o que é o mais íncrivel de TUDO isso?
 
-#
+# {background-color="#B048A2"}
 
 É que caminho ao lado de grandes mulheres.
 
 ![](img/turma_RLadiesgyn.jpg)
+
+::: footer
+Curso Introdução ao RBio e Experimentos ministrado por Dthenifer
+:::
 
 # 
 
@@ -112,9 +116,7 @@ Ou seja, na sua máquina.
 
 # 
 
-::: fragment
-Mas, por onde começar?
-:::
+Mas, por onde começar Fê?
 
 # O início de tudo...
 
@@ -125,11 +127,19 @@ Mas, por onde começar?
 O ponto é: **vale mais a pena se esforçar para encontrar um par de meias no meio de uma gaveta bagunçada ou vale mais a pena se esforçar para arrumar uma gaveta bagunçada?**
 
 
-# Step 1
+# Step 1 {background-color="#FDE962"}
 
 # 
 
-::: fragment
 Essa etapa do curso vai ser de muita troca e **live coding**. Vamos aprender as funcionalidades do R juntinhos e operantes, bora?
-:::
+
+# Step 2 {background-color="#FDE962"}
+
+# Tidyverse
+
+##
+
+# Teste de Hipóteses
+
+# K-Means
 
