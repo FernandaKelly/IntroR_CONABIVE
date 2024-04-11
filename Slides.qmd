@@ -14,13 +14,11 @@ editor: visual
 
 # Quem é a Fê?
 
-::: {.column width="60%"}
 Eu sou uma mulher preta com **coragem** e que fez (e ainda faz) uma boa limonada com os limões que a carreira na área da tecnologia oferece a todas minorias sociais.
-:::
 
 # E faz o quê?
 
-## Vida (??) Acadêmica
+## Carreira Acadêmica
 
 ::: fragment
 -   Graduada em Estatística pela Universidade Federal de Goiás (UFG);
@@ -40,19 +38,17 @@ Eu sou uma mulher preta com **coragem** e que fez (e ainda faz) uma boa limonada
 
 # E sabe o que é o mais íncrivel de TUDO isso?
 
-::: fragment
+#
+
 É que caminho ao lado de grandes mulheres.
-:::
+
+![](img/turma_RLadiesgyn.jpg)
 
 # 
 
 Sou fundadora de um capítulo da organização mundial R-Ladies. Este capítulo é o [R-Ladies Goiânia](https://www.rladiesgyn.com/) e também faço parte do time global da organização [AI Inclusive](https://www.ai-inclusive.org/).
 
 # E vocês?
-
-# E vocês?
-
-![](img/belive_allison.png)
 
 # Vamos começar...
 
