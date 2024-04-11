@@ -135,7 +135,34 @@ Essa etapa do curso vai ser de muita troca e **live coding**. Vamos aprender as 
 
 # Step 2 {background-color="#FDE962"}
 
-# Tidyverse
+# 
+
+![](img/tidyverse-default.png)
+
+#
+
+O universo Tidyverse é basicamente uma coleção de pacotes voltados a ciência de dados. 
+
+
+-   Estes pacotes tem filosofia, gramática e estruturas de dados  em comum (criadas para um pacote trabalhar em conjunto com o outro além de que quando voce aprende a usar um pacote, aprender a usar os outros pacotes do tidyverse se torna muito mais tranquilo)
+
+#
+
+Facilita MUITOOO o trabalho da pessoa que trabalha com dados
+
+#
+
+- Funções que vamos aprender:
+
+
+
+- rename(); distinct(); select();  
+
+- filter(); mutate(); transmute();
+
+- arrange(); summarise(); group_by();
+
+- sample_frac(); sample_n().
 
 ##
 
