@@ -1,0 +1,139 @@
+---
+title: "Introdução a linguagem de programação R e Suas Funcionalidades"
+author: "Fernanda Kelly R. Silva | Estatística"
+format: 
+  revealjs:
+    footer: "Slides por [Fernanda Kelly](https://fernandakellyrs.com). Slides [on GitHub](https://github.com/FernandaKelly/IntroR_CONABIVE)."
+    slide-number: true
+    preview-links: true
+    chalkboard: true
+    code-annotations: hover
+    echo: true
+editor: visual
+---
+
+# Quem é a Fê?
+
+::: {.column width="60%"}
+Eu sou uma mulher preta com **coragem** e que fez (e ainda faz) uma boa limonada com os limões que a carreira na área da tecnologia oferece a todas minorias sociais.
+:::
+
+# E faz o quê?
+
+## Vida (??) Acadêmica
+
+::: fragment
+-   Graduada em Estatística pela Universidade Federal de Goiás (UFG);
+:::
+
+::: fragment
+-   Especialista em Data Science e Analytics pela Universidade de São Paulo (USP);
+:::
+
+::: fragment
+-   Especialista em Gerenciamento de Projetos pela Fundação Getúlio Vargas (FGV);
+:::
+
+::: fragment
+-   Mestranda em Sistemas Inteligentes e Suas Aplicações na área da Saúde pela Universidade Federal em Ciências da Saúde de Porto Alegre (UFCSPA);
+:::
+
+# E sabe o que é o mais íncrivel de TUDO isso?
+
+::: fragment
+É que caminho ao lado de grandes mulheres.
+:::
+
+# 
+
+Sou fundadora de um capítulo da organização mundial R-Ladies. Este capítulo é o [R-Ladies Goiânia](https://www.rladiesgyn.com/) e também faço parte do time global da organização [AI Inclusive](https://www.ai-inclusive.org/).
+
+# E vocês?
+
+# E vocês?
+
+![](img/belive_allison.png)
+
+# Vamos começar...
+
+# Instalando o R (ou não?)
+
+::: callout-important
+Aqui é importante dizer que o nome da linguagem é R e o nome da IDE (integrated development environment) é RStudio, ou seja, a IDE RStudio é um ambiente de desenvolvimento que utilizamos para editar e executar os códigos em R. E claro, não existe somente a IDE RStudio que oferece a possibilidade de trabalhar com a linguagem R, há várias outras que também executam códigos em R, por exemplo: **Visual Studio Code (VSCode)**.
+:::
+
+## As opções...
+
+Você tem duas opções para trabalhar com a IDE RStudio:
+
+# Posit Cloud
+
+::: fragment
+Ou antigo [RStudio Cloud](https://www.fernandakellyrs.com/post/rstudio-cloud)
+:::
+
+::: fragment
+-   Para acessar o [Posit Cloud](https://posit.cloud/) você pode fazer login com o gmail, GitHub ou qualquer outra conta que você tiver interesse em utilizar para o cadastro;
+:::
+
+::: fragment
+-   Você poderá utilizar o espaço referente a 25 projetos e 25 horas (por mês) de computação. As horas de computação representam o uso da máquina virtual durante cada período para editar, executar, renderizar ou apresentar conteúdo.
+:::
+
+# 
+
+-   Por padrão, cada projeto recebe 1 GB de RAM e 1 CPU, além de um limite de execução em segundo plano de 1 hora.
+
+# Localmente
+
+::: fragment
+Ou seja, na sua máquina.
+:::
+
+::: fragment
+-   No dia a dia, utilizar o R localmente é mais funcional e, para isso, você deve [instalar o R](https://posit.co/download/rstudio-desktop/);
+-   Em relação a IDE RStudio você pode instalar [aqui](https://posit.co/download/rstudio-desktop/).
+:::
+
+# E porquê usar o R?
+
+# 
+
+-   É uma linguagem de programação que possui muitas ferramentas para análise de dados, visualização de dados e tantas outras ferramentas;
+
+-   É código aberto (open source);
+
+-   Possui uma comunidade ativa de pessoas desenvolvedoras ([curso-r fórum](https://discourse.curso-r.com/));
+
+-   É flexível, permite desenvolver funções e pacotes para facilitar o trabalho;
+
+-   Está disponível, gratuitamente, em diferentes sistemas operacionais: Windows, Linux e Mac.
+
+# 
+
+-   Os pacotes R contêm **código**, **dados** e **documentação** em um formato de coleção padronizado que pode ser instalado pelos usuários do R, normalmente por meio de um repositório de software centralizado como o **CRAN (Comprehensive R Archive Network)**.
+-   O grande número de pacotes disponíveis para o R e a facilidade de instalação e uso deles são citados como um fator importante que impulsiona a adoção generalizada da linguagem na ciência de dados.
+
+# 
+
+::: fragment
+Mas, por onde começar?
+:::
+
+# O início de tudo...
+
+# ... são as boas práticas!
+
+#
+
+O ponto é: **vale mais a pena se esforçar para encontrar um par de meias no meio de uma gaveta bagunçada ou vale mais a pena se esforçar para arrumar uma gaveta bagunçada?**
+
+
+# Step 1
+
+# 
+
+::: fragment
+Essa etapa do curso vai ser de muita troca e **live coding**. Vamos aprender as funcionalidades do R juntinhos e operantes, bora?
+:::
+
