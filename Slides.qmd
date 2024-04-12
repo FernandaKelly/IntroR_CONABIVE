@@ -237,6 +237,8 @@ x %>% mean() %>% round(2) %>% sum(5)
 
 #
 
+A primeira função que vamos estudar é a *rename()*. Esta função irá *renomear* as variáveis do banco de dados. Vejamos o exemplo a seguir:
+
 ```{r}
 
 ```
@@ -245,6 +247,8 @@ x %>% mean() %>% round(2) %>% sum(5)
 # distinct()
 
 #
+
+A função **distinct()** seleciona apenas as linhas únicas (distintas) de uma determinada variável do banco de dados.
 
 ```{r}
 
@@ -423,6 +427,8 @@ dados_Carbon %>%
 
 #
 
+Temos a função *group_by()* que irá agrupar o banco de dados em relação a uma variável ou mais de uma.
+
 ```{r}
 
 ```
@@ -452,6 +458,9 @@ Juntos **group_by()** e **summarise()** fornecem uma das ferramentas que você u
 # case_when()
 
 #
+
+O **case_when** é uma generalização do **if_else()**. 
+
 
 ```{r}
 
