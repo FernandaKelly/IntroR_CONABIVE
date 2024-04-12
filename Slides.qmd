@@ -356,19 +356,70 @@ dados_Carbon %>%
 
 #
 
+Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho de mutate().
+
+mutate()sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver no RStudio, a maneira mais fácil de ver todas as colunas é View().
+
 ```{r}
 
 ```
 
+#
+
+Observe que você pode consultar colunas que acabou de criar:
+
+
 # transmute()
 
 #
+
+Se você quiser apenas manter as novas variáveis, use a função **transmute()**:
 
 ```{r}
 
 ```
 
 # arrange()
+
+#
+
+A função **arrange()** orderna linhas.
+
+- Se a variável for categórica ordena por ordem alfabética
+- Se a variável for numérica ordena do menor para o maior
+- Se a varíavel for um fator, ordena pelos níveis do fator
+
+#
+
+O exemplo abaixo ordena o banco de dados de acordo com a variável **uptake**.
+
+```{r}
+dados_Carbon %>%
+  dplyr::arrange(uptake) %>% 
+  utils::head(3)
+```
+
+#
+
+Mas, nós podemos ordenar as linhas de forma decrescente usando a função **desc()**. Veja o exemplo abaixo.
+
+```{r}
+dados_Carbon %>% 
+  dplyr::arrange(desc(uptake)) %>% 
+  utils::head(3)
+```
+
+#
+
+É também possível ordenar mais de uma coluna de uma vez
+
+```{r}
+dados_Carbon %>%
+  dplyr::arrange(uptake, conc) %>% 
+  utils::head(3)
+```
+
+# group_by()
 
 #
 
@@ -380,11 +431,25 @@ dados_Carbon %>%
 
 #
 
+O último verbo chave é summarise(). Ele recolhe um quadro de dados em uma única linha:
+
 ```{r}
 
 ```
 
-# group_by()
+#
+
+A função **summarise()** não é muito útil, a menos que o combinemos com **group_by()**. Isso altera a unidade de análise do conjunto de dados completo para grupos individuais. Então, quando você usar as funções `dplyr` em um quadro de dados agrupado, eles serão aplicados automaticamente “por grupo”. Por exemplo, se aplicarmos exatamente o mesmo código a um quadro de dados agrupado por data, obteremos o atraso médio por data:
+
+```{r}
+
+```
+
+#
+
+Juntos **group_by()** e **summarise()** fornecem uma das ferramentas que você usará mais comumente ao trabalhar com `dplyr`: resumos agrupados.
+
+# case_when()
 
 #
 
@@ -392,21 +457,6 @@ dados_Carbon %>%
 
 ```
 
-# sample_frac()
-
-#
-
-```{r}
-
-```
-
-# sample_n()
-
-#
-
-```{r}
-
-```
 
 
 

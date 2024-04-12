@@ -818,7 +818,7 @@ Fernanda Kelly R. Silva | Estatística
 <section id="section-23" class="title-slide slide level1 center">
 <h1></h1>
 <p>Já a função <strong>filter()</strong> permite subdividir observações com base em seus valores. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os subsequentes são as expressões que filtram o quadro de dados.</p>
-<p>Quando você executa essa linha de código, o pacote dplyr executa a operação de filtragem e retorna um novo quadro de dados.</p>
+<p>Quando você executa essa linha de código, o pacote <code>dplyr</code> executa a operação de filtragem e retorna um novo quadro de dados.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb18-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -852,14 +852,36 @@ Fernanda Kelly R. Silva | Estatística
 
 <img data-src="img/boolenaos.jpeg" class="r-stretch"></section>
 
+<section id="section-26" class="title-slide slide level1 center">
+<h1></h1>
+<p>No exemplo a seguir utilizamos o operador <strong>&lt;=</strong> (menor igual) e o <strong>&amp;</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(conc <span class="sc">&lt;=</span> <span class="dv">95</span> <span class="sc">&amp;</span> Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment conc uptake
+1   Qn1 Quebec nonchilled   95   16.0
+2   Qn2 Quebec nonchilled   95   13.6
+3   Qn3 Quebec nonchilled   95   16.2</code></pre>
+</div>
+</div>
+</section>
+
 <section id="mutate" class="title-slide slide level1 center">
 <h1>mutate()</h1>
 
 </section>
 
-<section id="section-26" class="title-slide slide level1 center">
+<section id="section-27" class="title-slide slide level1 center">
 <h1></h1>
+<p>Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho de mutate().</p>
+<p>mutate()sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver no RStudio, a maneira mais fácil de ver todas as colunas é View().</p>
+</section>
 
+<section id="section-28" class="title-slide slide level1 center">
+<h1></h1>
+<p>Observe que você pode consultar colunas que acabou de criar:</p>
 </section>
 
 <section id="transmute" class="title-slide slide level1 center">
@@ -867,9 +889,9 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-27" class="title-slide slide level1 center">
+<section id="section-29" class="title-slide slide level1 center">
 <h1></h1>
-
+<p>Se você quiser apenas manter as novas variáveis, use a função <strong>transmute()</strong>:</p>
 </section>
 
 <section id="arrange" class="title-slide slide level1 center">
@@ -877,7 +899,70 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-28" class="title-slide slide level1 center">
+<section id="section-30" class="title-slide slide level1 center">
+<h1></h1>
+<p>A função <strong>arrange()</strong> orderna linhas.</p>
+<ul>
+<li>Se a variável for categórica ordena por ordem alfabética</li>
+<li>Se a variável for numérica ordena do menor para o maior</li>
+<li>Se a varíavel for um fator, ordena pelos níveis do fator</li>
+</ul>
+</section>
+
+<section id="section-31" class="title-slide slide level1 center">
+<h1></h1>
+<p>O exemplo abaixo ordena o banco de dados de acordo com a variável <strong>uptake</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake) <span class="sc">%&gt;%</span> </span>
+<span id="cb24-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant        Type Treatment conc uptake
+1   Mc2 Mississippi   chilled   95    7.7
+2   Qc2      Quebec   chilled   95    9.3
+3   Mc1 Mississippi   chilled   95   10.5</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section-32" class="title-slide slide level1 center">
+<h1></h1>
+<p>Mas, nós podemos ordenar as linhas de forma decrescente usando a função <strong>desc()</strong>. Veja o exemplo abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(uptake)) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment conc uptake
+1   Qn3 Quebec nonchilled 1000   45.5
+2   Qn2 Quebec nonchilled 1000   44.3
+3   Qn3 Quebec nonchilled  675   43.9</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section-33" class="title-slide slide level1 center">
+<h1></h1>
+<p>É também possível ordenar mais de uma coluna de uma vez</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb28-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake, conc) <span class="sc">%&gt;%</span> </span>
+<span id="cb28-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant        Type Treatment conc uptake
+1   Mc2 Mississippi   chilled   95    7.7
+2   Qc2      Quebec   chilled   95    9.3
+3   Mc1 Mississippi   chilled   95   10.5</code></pre>
+</div>
+</div>
+</section>
+
+<section id="group_by" class="title-slide slide level1 center">
+<h1>group_by()</h1>
+
+</section>
+
+<section id="section-34" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -887,37 +972,27 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-29" class="title-slide slide level1 center">
+<section id="section-35" class="title-slide slide level1 center">
 <h1></h1>
-
+<p>O último verbo chave é summarise(). Ele recolhe um quadro de dados em uma única linha:</p>
 </section>
 
-<section id="group_by" class="title-slide slide level1 center">
-<h1>group_by()</h1>
-
-</section>
-
-<section id="section-30" class="title-slide slide level1 center">
+<section id="section-36" class="title-slide slide level1 center">
 <h1></h1>
-
+<p>A função <strong>summarise()</strong> não é muito útil, a menos que o combinemos com <strong>group_by()</strong>. Isso altera a unidade de análise do conjunto de dados completo para grupos individuais. Então, quando você usar as funções <code>dplyr</code> em um quadro de dados agrupado, eles serão aplicados automaticamente “por grupo”. Por exemplo, se aplicarmos exatamente o mesmo código a um quadro de dados agrupado por data, obteremos o atraso médio por data:</p>
 </section>
 
-<section id="sample_frac" class="title-slide slide level1 center">
-<h1>sample_frac()</h1>
-
-</section>
-
-<section id="section-31" class="title-slide slide level1 center">
+<section id="section-37" class="title-slide slide level1 center">
 <h1></h1>
+<p>Juntos <strong>group_by()</strong> e <strong>summarise()</strong> fornecem uma das ferramentas que você usará mais comumente ao trabalhar com <code>dplyr</code>: resumos agrupados.</p>
+</section>
+
+<section id="case_when" class="title-slide slide level1 center">
+<h1>case_when()</h1>
 
 </section>
 
-<section id="sample_n" class="title-slide slide level1 center">
-<h1>sample_n()</h1>
-
-</section>
-
-<section id="section-32" class="title-slide slide level1 center">
+<section id="section-38" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
