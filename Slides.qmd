@@ -159,14 +159,19 @@ Os pacotes que fazem parte desse universo são:
 
 ## Funções que vamos aprender
 
+O pacote auxilia na manipulação de dados, realizando-a de forma eficiente e, com essas funções, temos uma flexibilidade incrível para transformar nossos dados.
 
-- rename(); distinct(); select();  
+- rename(); distinct();   
 
-- filter(); mutate(); transmute();
+- select(); filter();
 
-- arrange(); summarise(); group_by();
+- mutate(); transmute();
 
-- sample_frac(); sample_n().
+- arrange(); summarise(); 
+
+- group_by(); sample_frac();
+
+- sample_n().
 
 # Mas antes de tudo...
 # ... precisamos de uma base de dados!
@@ -202,18 +207,167 @@ As variáveis que compõem o banco de dados são:
 
 - uptake: um vetor numérico de taxas de absorção de dióxido de carbono ($\mu mol/m^{2} sec$).
 
+# Vamos aprender manipulação de dados?
+
+#  {background-image="img/featured.png"}
+
+
+#
+
+Pipes são uma ferramenta poderosa para expressar claramente uma sequência de múltiplas operações. A versão 4.0+ do R possui um pipe “nativo” **|>** que não depende da dependência do pacote magrittr. Aparentemente, ele deveria ser mais rápido que o pipe do pacote magrittr, por fazer muito mais “nos bastidores” do que o **%>%**. Você pode ler mais sobre isso em [R for Data Science](https://r4ds.had.co.nz/pipes.html). 
+
+```{r}
+library(magrittr)
+```
+
+#
+
+Exemplo:
+
+```{r}
+x <- c(1.234, 2.4536, 3.442, 3.24, 1.2223)
+
+sum(round(mean(x),2),5)
+
+x %>% mean() %>% round(2) %>% sum(5)
+```
+---
 
 # rename()
+
+#
+
+```{r}
+
+```
+
+
 # distinct()
+
+#
+
+```{r}
+
+```
+
 # select()
+
+#
+
+A função select() permite selecionar colunas nomeando-as e separando-as por vírgula ou não. Veremos exemplos abaixo.
+
+```{r eval=FALSE}
+dados_Carbon %>%
+  dplyr::select(Plant, Treatment) %>% 
+  utils::head(3)
+
+dados_Carbon %>% 
+  dplyr::select(1,3) %>% 
+  utils::head(3)
+```
+
+#
+
+Você pode selecionar colunas utilizando os dois pontos **:**, mas nesse caso, a seleção das colunas seguem a ideia de continuação. Por semplo:
+
+```{r}
+dados_Carbon %>% 
+  dplyr::select(Plant:Treatment) %>% 
+  utils::head(3)
+```
+
+
+#
+
+Exisem funções no `dplyr` que ajudam na seleção das variáveis de uma outra forma:
+
+- `starts_with()`: colunas que começam com um prefixo
+- `ends_with()`: colunas que terminam com um sufixo
+- `contains()`: colunas que contêm uma string
+- `last_col()`: última coluna
+
+
+```{r}
+dados_Carbon %>% 
+  dplyr::select(starts_with("Pl")) %>% 
+  utils::head(3)
+```
+
+---
+
+
+
+Esta função nos permite retirar colunas da base da seguinte forma:
+
+```{r}
+iris %>% select(-Species)
+```
+
+
 # filter()
+
+#
+
+```{r}
+
+```
+
 # mutate()
+
+#
+
+```{r}
+
+```
+
 # transmute()
+
+#
+
+```{r}
+
+```
+
 # arrange()
+
+#
+
+```{r}
+
+```
+
 # summarise()
+
+#
+
+```{r}
+
+```
+
 # group_by()
+
+#
+
+```{r}
+
+```
+
 # sample_frac()
+
+#
+
+```{r}
+
+```
+
 # sample_n()
+
+#
+
+```{r}
+
+```
+
 
 
 # Teste de Hipóteses
