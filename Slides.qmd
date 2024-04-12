@@ -190,11 +190,17 @@ head(dados_Carbon,3)
 
 ## 
 
+As variáveis que compõem o banco de dados são:
 
+- Plant: um fator ordenado com níveis Qn1 < Qn2 < Qn3 < ... < Mc1 fornecendo um identificador único para cada planta.
 
+- Type: um fator com dois níveis, sendo eles **Quebec** e **Mississippi** dando a origem da planta.
 
+- Treatment: um fator com dois níveis, sendo eles **nonchilled** e **chilled**.
 
+- conc: um vetor numérico de concentrações ambientais de dióxido de carbono (mL/L).
 
+- uptake: um vetor numérico de taxas de absorção de dióxido de carbono ($\mu mol/m^{2} sec$).
 
 
 # rename()
