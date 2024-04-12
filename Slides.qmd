@@ -536,7 +536,22 @@ Deixo o post no meu blog sobre [a função across](https://www.fernandakellyrs.c
 
 # Pacote Esquisse
 
+#
 
+O esquisse é um pacote que permite a criação de gráficos em {ggplot2} de maneira point and click, o que torna a construção de gráficos uma tarefa bem mais simples, pois não há necessidade de digitar as linhas de código.
+
+Além disso, é possível recuperar o código que gerou os gráficos, o que é ótimo para garantir a reprodutibilidade dos resultados!
+
+# Legal, né?
+
+#
+
+Vamos brincar um pouco com essa aplicação.
+
+```{r eval=FALSE}
+library(esquisse)
+esquisse::esquisser(viewer = "browser")
+```
 
 # Teste de Hipóteses
 
