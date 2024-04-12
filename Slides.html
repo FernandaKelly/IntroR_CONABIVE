@@ -679,7 +679,7 @@ Fernanda Kelly R. Silva | Estatística
 
 <section id="section-14" class="title-slide slide level1 center">
 <h1></h1>
-<p>Pipes são uma ferramenta poderosa para expressar claramente uma sequência de múltiplas operações. A versão 4.0+ do R possui um pipe “nativo” <strong>|&gt;</strong> que não depende da dependência do pacote magrittr. Aparentemente, ele deveria ser mais rápido que o pipe do pacote magrittr, por fazer muito mais “nos bastidores” do que o <strong>%&gt;%</strong>. Você pode ler mais sobre isso em (R for Data Science)[https://r4ds.had.co.nz/pipes.html].</p>
+<p>Pipes são uma ferramenta poderosa para expressar claramente uma sequência de múltiplas operações. A versão 4.0+ do R possui um pipe “nativo” <strong>|&gt;</strong> que não depende da dependência do pacote magrittr. Aparentemente, ele deveria ser mais rápido que o pipe do pacote magrittr, por fazer muito mais “nos bastidores” do que o <strong>%&gt;%</strong>. Você pode ler mais sobre isso em <a href="https://r4ds.had.co.nz/pipes.html">R for Data Science</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -732,7 +732,82 @@ Fernanda Kelly R. Silva | Estatística
 
 <section id="section-18" class="title-slide slide level1 center">
 <h1></h1>
+<p>A função <strong>select()</strong> permite selecionar colunas nomeando-as e separando-as por vírgula ou não. Veremos exemplos abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant  Treatment
+1   Qn1 nonchilled
+2   Qn1 nonchilled
+3   Qn1 nonchilled</code></pre>
+</div>
+</div>
+<p>Veja que com o código abaixo a saída é a mesma:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant, Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 
+<section id="section-19" class="title-slide slide level1 center">
+<h1></h1>
+<p>Você pode selecionar colunas utilizando os dois pontos <strong>:</strong>, mas nesse caso, a seleção das colunas seguem a ideia de continuação. Por semplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant<span class="sc">:</span>Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment
+1   Qn1 Quebec nonchilled
+2   Qn1 Quebec nonchilled
+3   Qn1 Quebec nonchilled</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section-20" class="title-slide slide level1 center">
+<h1></h1>
+<p>Exisem funções no <code>dplyr</code> que ajudam na seleção das variáveis de uma outra forma:</p>
+<ul>
+<li>starts_with(): colunas que começam com um prefixo</li>
+<li>ends_with(): colunas que terminam com um sufixo</li>
+<li>contains(): colunas que contêm uma string</li>
+<li>last_col(): última coluna</li>
+</ul>
+</section>
+
+<section id="section-21" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb14-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"Pl"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant
+1   Qn1
+2   Qn1
+3   Qn1</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section-22" class="title-slide slide level1 center">
+<h1></h1>
+<p>Esta função nos permite retirar colunas da base da seguinte forma:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type conc uptake
+1   Qn1 Quebec   95   16.0
+2   Qn1 Quebec  175   30.4
+3   Qn1 Quebec  250   34.8</code></pre>
+</div>
+</div>
 </section>
 
 <section id="filter" class="title-slide slide level1 center">
@@ -740,17 +815,49 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-19" class="title-slide slide level1 center">
+<section id="section-23" class="title-slide slide level1 center">
 <h1></h1>
-
+<p>Já a função <strong>filter()</strong> permite subdividir observações com base em seus valores. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os subsequentes são as expressões que filtram o quadro de dados.</p>
+<p>Quando você executa essa linha de código, o pacote dplyr executa a operação de filtragem e retorna um novo quadro de dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment conc uptake
+1   Qn1 Quebec nonchilled   95   16.0
+2   Qn1 Quebec nonchilled  175   30.4
+3   Qn1 Quebec nonchilled  250   34.8</code></pre>
+</div>
+</div>
 </section>
+
+<section id="section-24" class="title-slide slide level1 center">
+<h1></h1>
+<p>Você pode também utilizar essa função de forma eficaz, você precisa saber como selecionar as observações desejadas usando os operadores de comparação. O R fornece o conjunto padrão: &gt;, &gt;=, &lt;, &lt;=, != (diferente) e == (igual).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, conc <span class="sc">&lt;=</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment conc uptake
+1   Qn1 Quebec nonchilled   95   16.0
+2   Qn2 Quebec nonchilled   95   13.6
+3   Qn3 Quebec nonchilled   95   16.2</code></pre>
+</div>
+</div>
+</section>
+
+<section id="section-25" class="title-slide slide level1 center">
+<h1></h1>
+<p>Vários argumentos do <strong>filter()</strong> são combinados com <strong>“e”</strong>: cada expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você mesmo precisará usar operadores booleanos: &amp; é “e”, | é “ou” e ! é “não”. A Figura abaixo mostra o conjunto completo de operações booleanas.</p>
+
+<img data-src="img/boolenaos.jpeg" class="r-stretch"></section>
 
 <section id="mutate" class="title-slide slide level1 center">
 <h1>mutate()</h1>
 
 </section>
 
-<section id="section-20" class="title-slide slide level1 center">
+<section id="section-26" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -760,7 +867,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-21" class="title-slide slide level1 center">
+<section id="section-27" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -770,7 +877,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-22" class="title-slide slide level1 center">
+<section id="section-28" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -780,7 +887,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-23" class="title-slide slide level1 center">
+<section id="section-29" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -790,7 +897,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-24" class="title-slide slide level1 center">
+<section id="section-30" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -800,7 +907,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-25" class="title-slide slide level1 center">
+<section id="section-31" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
@@ -810,7 +917,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-26" class="title-slide slide level1 center">
+<section id="section-32" class="title-slide slide level1 center">
 <h1></h1>
 
 </section>
