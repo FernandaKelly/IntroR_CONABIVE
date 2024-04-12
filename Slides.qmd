@@ -459,7 +459,9 @@ Juntos **group_by()** e **summarise()** fornecem uma das ferramentas que você u
 
 #
 
-O **case_when** é uma generalização do **if_else()**. 
+O **case_when** é uma generalização do **if_else()**. Cada caso é avaliado sequencialmente e a primeira correspondência de cada elemento determina o valor correspondente no vetor de saída. Se nenhum caso corresponder, o **.default** será usado como uma instrução final "else".
+
+- case_when() é um equivalente em R da CASE WHEN instrução `SQL` "pesquisada".
 
 
 ```{r}
