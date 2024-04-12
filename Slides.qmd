@@ -240,7 +240,47 @@ x %>% mean() %>% round(2) %>% sum(5)
 A primeira função que vamos estudar é a *rename()*. Esta função irá *renomear* as variáveis do banco de dados. Vejamos o exemplo a seguir:
 
 ```{r}
+dados_Carbon %>% 
+  dplyr::rename("planta" = "Plant") %>% 
+  utils::head(3)
+```
+#
 
+Nós temos também a opção da função **rename_with**, em que podemos aplicar funções de interesse para renomear as variáveis.
+
+```{r}
+dados_Carbon %>% 
+  dplyr::rename_with(toupper) %>%
+  #dplyr::rename_with(tolower) %>%
+  utils::head(3)
+```
+#
+
+Há também as seguintes variações:
+
+- rename_if
+
+```{r}
+dados_Carbon %>% 
+  dplyr::rename_if(is.factor, toupper) %>% 
+  utils::head(1)
+```
+
+- rename_at
+
+```{r eval=FALSE}
+dados_Carbon %>% 
+  dplyr::rename_at(vars(Plant:conc), toupper) %>% 
+  utils::head(1)
+```
+
+#
+- rename_all
+
+```{r}
+dados_Carbon %>% 
+  dplyr::rename_all(toupper) %>% 
+  utils::head(1)
 ```
 
 
@@ -251,7 +291,8 @@ A primeira função que vamos estudar é a *rename()*. Esta função irá *renom
 A função **distinct()** seleciona apenas as linhas únicas (distintas) de uma determinada variável do banco de dados.
 
 ```{r}
-
+dados_Carbon %>% 
+  dplyr::distinct(Type)
 ```
 
 # select()
@@ -284,7 +325,6 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-
 #
 
 Exisem funções no `dplyr` que ajudam na seleção das variáveis de uma outra forma:
@@ -312,6 +352,7 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
+**A função select() também possui as variações select_if(), select_at() e select_all().**
 
 # filter()
 
@@ -355,14 +396,15 @@ dados_Carbon %>%
   dplyr::filter(conc <= 95 & Treatment == "nonchilled") %>% 
   utils::head(3)
 ```
+**A função filter() também possui as variações filter_if(), filter_at() e filter_all().**
 
 # mutate()
 
 #
 
-Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho de mutate().
+Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho da função **mutate()**.
 
-mutate()sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver no RStudio, a maneira mais fácil de ver todas as colunas é View().
+**mutate()** sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver na IDE RStudio, a maneira mais fácil de ver todas as colunas é através da função **View()**.
 
 ```{r}
 
@@ -463,11 +505,11 @@ O **case_when** é uma generalização do **if_else()**. Cada caso é avaliado s
 
 - case_when() é um equivalente em R da CASE WHEN instrução `SQL` "pesquisada".
 
-
 ```{r}
 
 ```
 
+# Pacote Esquisse
 
 
 
