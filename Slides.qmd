@@ -508,7 +508,8 @@ O **case_when** é uma generalização do **if_else()**. Cada caso é avaliado s
 ```{r}
 dados_Carbon %>% 
   dplyr::mutate(
-    new_plant = dplyr::case_when()
+    new_plant = dplyr::case_when(conc >= 125 ~ "Tipo1",
+                                 .default = "Tipo2")
     
     
     )
