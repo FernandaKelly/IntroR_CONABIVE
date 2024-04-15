@@ -407,12 +407,19 @@ Além de selecionar conjuntos de colunas existentes, geralmente é útil adicion
 **mutate()** sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver na IDE RStudio, a maneira mais fácil de ver todas as colunas é através da função **View()**.
 
 ```{r}
-
+exemplo_mutate <- dados_Carbon %>% 
+                    dplyr::mutate(soma_numeric = conc + uptake,
+                                  plant_trat = stringr::str_c(Plant, Treatment, sep = "-")) 
 ```
-
 #
 
 Observe que você pode consultar colunas que acabou de criar:
+
+```{r}
+dados_Carbon %>% 
+ dplyr::mutate(soma_numeric = conc + uptake) %>% 
+ utils::head(3)
+```
 
 
 # transmute()
@@ -422,7 +429,9 @@ Observe que você pode consultar colunas que acabou de criar:
 Se você quiser apenas manter as novas variáveis, use a função **transmute()**:
 
 ```{r}
-
+exemplo_transmute <- dados_Carbon %>% 
+                       dplyr::transmute(soma_numeric = conc + uptake,
+                                     plant_trat = stringr::str_c(Plant, Treatment, sep = "-"))
 ```
 
 # arrange()
@@ -537,7 +546,7 @@ Um exemplo bem rapidinho:
 
 Deixo o post no meu blog sobre [a função across](https://www.fernandakellyrs.com/post/fun%C3%A7%C3%A3o-across) para vocês estudarem mais sobre ela.
 
-# Pacote Esquisse
+# Pacote Esquisse {background-image="img/esquisse.jpeg"}
 
 #
 
