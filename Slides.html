@@ -792,6 +792,15 @@ Fernanda Kelly R. Silva | Estatística
 <section id="section-20" class="title-slide slide level1 center">
 <h1></h1>
 <p>A função <strong>distinct()</strong> seleciona apenas as linhas únicas (distintas) de uma determinada variável do banco de dados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">distinct</span>(Type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         Type
+1      Quebec
+2 Mississippi</code></pre>
+</div>
+</div>
 </section>
 
 <section id="select" class="title-slide slide level1 center">
@@ -803,9 +812,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>A função <strong>select()</strong> permite selecionar colunas nomeando-as e separando-as por vírgula ou não. Veremos exemplos abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="dv">1</span>,<span class="dv">3</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant  Treatment
 1   Qn1 nonchilled
@@ -815,9 +824,9 @@ Fernanda Kelly R. Silva | Estatística
 </div>
 <p>Veja que com o código abaixo a saída é a mesma:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
-<span id="cb20-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant, Treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb20-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb22-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant, Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -825,9 +834,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>Você pode selecionar colunas utilizando os dois pontos <strong>:</strong>, mas nesse caso, a seleção das colunas seguem a ideia de continuação. Por semplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant<span class="sc">:</span>Treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Plant<span class="sc">:</span>Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type  Treatment
 1   Qn1 Quebec nonchilled
@@ -851,9 +860,9 @@ Fernanda Kelly R. Silva | Estatística
 <section id="section-24" class="title-slide slide level1 center">
 <h1></h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb23-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"Pl"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb23-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb25-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">"Pl"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant
 1   Qn1
@@ -867,9 +876,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>Esta função nos permite retirar colunas da base da seguinte forma:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb25-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Treatment) <span class="sc">%&gt;%</span> </span>
-<span id="cb25-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type conc uptake
 1   Qn1 Quebec   95   16.0
@@ -877,6 +886,7 @@ Fernanda Kelly R. Silva | Estatística
 3   Qn1 Quebec  250   34.8</code></pre>
 </div>
 </div>
+<p><strong>A função select() também possui as variações select_if(), select_at() e select_all().</strong></p>
 </section>
 
 <section id="filter" class="title-slide slide level1 center">
@@ -889,8 +899,8 @@ Fernanda Kelly R. Silva | Estatística
 <p>Já a função <strong>filter()</strong> permite subdividir observações com base em seus valores. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os subsequentes são as expressões que filtram o quadro de dados.</p>
 <p>Quando você executa essa linha de código, o pacote <code>dplyr</code> executa a operação de filtragem e retorna um novo quadro de dados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb27-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type  Treatment conc uptake
 1   Qn1 Quebec nonchilled   95   16.0
@@ -904,8 +914,8 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>Você pode também utilizar essa função de forma eficaz, você precisa saber como selecionar as observações desejadas usando os operadores de comparação. O R fornece o conjunto padrão: &gt;, &gt;=, &lt;, &lt;=, != (diferente) e == (igual).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, conc <span class="sc">&lt;=</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb29-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>dplyr<span class="sc">::</span><span class="fu">filter</span>(dados_Carbon, conc <span class="sc">&lt;=</span> <span class="dv">95</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-2"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type  Treatment conc uptake
 1   Qn1 Quebec nonchilled   95   16.0
@@ -925,9 +935,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>No exemplo a seguir utilizamos o operador <strong>&lt;=</strong> (menor igual) e o <strong>&amp;</strong>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb31-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(conc <span class="sc">&lt;=</span> <span class="dv">95</span> <span class="sc">&amp;</span> Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb31-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb33-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(conc <span class="sc">&lt;=</span> <span class="dv">95</span> <span class="sc">&amp;</span> Treatment <span class="sc">==</span> <span class="st">"nonchilled"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb33-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type  Treatment conc uptake
 1   Qn1 Quebec nonchilled   95   16.0
@@ -935,6 +945,7 @@ Fernanda Kelly R. Silva | Estatística
 3   Qn3 Quebec nonchilled   95   16.2</code></pre>
 </div>
 </div>
+<p><strong>A função filter() também possui as variações filter_if(), filter_at() e filter_all().</strong></p>
 </section>
 
 <section id="mutate" class="title-slide slide level1 center">
@@ -944,8 +955,8 @@ Fernanda Kelly R. Silva | Estatística
 
 <section id="section-30" class="title-slide slide level1 center">
 <h1></h1>
-<p>Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho de mutate().</p>
-<p>mutate()sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver no RStudio, a maneira mais fácil de ver todas as colunas é View().</p>
+<p>Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho da função <strong>mutate()</strong>.</p>
+<p><strong>mutate()</strong> sempre adiciona novas colunas no final do seu conjunto de dados, então começaremos criando um conjunto de dados mais restrito para que possamos ver as novas variáveis. Lembre-se que quando você estiver na IDE RStudio, a maneira mais fácil de ver todas as colunas é através da função <strong>View()</strong>.</p>
 </section>
 
 <section id="section-31" class="title-slide slide level1 center">
@@ -982,9 +993,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>O exemplo abaixo ordena o banco de dados de acordo com a variável <strong>uptake</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
-<span id="cb33-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake) <span class="sc">%&gt;%</span> </span>
-<span id="cb33-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake) <span class="sc">%&gt;%</span> </span>
+<span id="cb35-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant        Type Treatment conc uptake
 1   Mc2 Mississippi   chilled   95    7.7
@@ -998,9 +1009,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>Mas, nós podemos ordenar as linhas de forma decrescente usando a função <strong>desc()</strong>. Veja o exemplo abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
-<span id="cb35-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(uptake)) <span class="sc">%&gt;%</span> </span>
-<span id="cb35-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(<span class="fu">desc</span>(uptake)) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant   Type  Treatment conc uptake
 1   Qn3 Quebec nonchilled 1000   45.5
@@ -1014,9 +1025,9 @@ Fernanda Kelly R. Silva | Estatística
 <h1></h1>
 <p>É também possível ordenar mais de uma coluna de uma vez</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
-<span id="cb37-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake, conc) <span class="sc">%&gt;%</span> </span>
-<span id="cb37-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(uptake, conc) <span class="sc">%&gt;%</span> </span>
+<span id="cb39-3"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Plant        Type Treatment conc uptake
 1   Mc2 Mississippi   chilled   95    7.7
@@ -1067,6 +1078,61 @@ Fernanda Kelly R. Silva | Estatística
 <ul>
 <li>case_when() é um equivalente em R da CASE WHEN instrução <code>SQL</code> “pesquisada”.</li>
 </ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
+<span id="cb41-3"><a href=""></a>    <span class="at">new_plant =</span> dplyr<span class="sc">::</span><span class="fu">case_when</span>(conc <span class="sc">&gt;=</span> <span class="dv">125</span> <span class="sc">~</span> <span class="st">"Tipo1"</span>,</span>
+<span id="cb41-4"><a href=""></a>                                 <span class="at">.default =</span> <span class="st">"Tipo2"</span>)</span>
+<span id="cb41-5"><a href=""></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-6"><a href=""></a>  utils<span class="sc">::</span><span class="fu">head</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Plant   Type  Treatment conc uptake new_plant
+1   Qn1 Quebec nonchilled   95     16     Tipo2</code></pre>
+</div>
+</div>
+</section>
+
+<section id="across" class="title-slide slide level1 center">
+<h1>across()</h1>
+<p><strong>across()</strong> facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica <strong>select()</strong> dentro de funções de “mascaramento de dados” como <strong>summarise()</strong> e <strong>mutate()</strong>.</p>
+<p><strong>if_any()</strong> e <strong>if_all()</strong> aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico:</p>
+<ul>
+<li>if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas</li>
+<li>if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas</li>
+</ul>
+<p>Se você só precisa selecionar colunas sem aplicar uma transformação a cada uma delas, provavelmente desejará usar <strong>pick()</strong>.</p>
+<p><strong>across() substitui a família de “variantes com escopo definido” como summarise_at(), summarise_if() e summarise_all().</strong></p>
+</section>
+
+<section id="section-42" class="title-slide slide level1 center">
+<h1></h1>
+<p>Um exemplo bem rapidinho:</p>
+<p>Deixo o post no meu blog sobre <a href="https://www.fernandakellyrs.com/post/fun%C3%A7%C3%A3o-across">a função across</a> para vocês estudarem mais sobre ela.</p>
+</section>
+
+<section id="pacote-esquisse" class="title-slide slide level1 center">
+<h1>Pacote Esquisse</h1>
+
+</section>
+
+<section id="section-43" class="title-slide slide level1 center">
+<h1></h1>
+<p>O esquisse é um pacote que permite a criação de gráficos em {ggplot2} de maneira point and click, o que torna a construção de gráficos uma tarefa bem mais simples, pois não há necessidade de digitar as linhas de código.</p>
+<p>Além disso, é possível recuperar o código que gerou os gráficos, o que é ótimo para garantir a reprodutibilidade dos resultados!</p>
+</section>
+
+<section id="legal-né" class="title-slide slide level1 center">
+<h1>Legal, né?</h1>
+
+</section>
+
+<section id="section-44" class="title-slide slide level1 center">
+<h1></h1>
+<p>Vamos brincar um pouco com essa aplicação.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a><span class="fu">library</span>(esquisse)</span>
+<span id="cb43-2"><a href=""></a>esquisse<span class="sc">::</span><span class="fu">esquisser</span>(<span class="at">viewer =</span> <span class="st">"browser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 
 <section id="teste-de-hipóteses" class="title-slide slide level1 center">

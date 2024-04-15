@@ -510,20 +510,22 @@ dados_Carbon %>%
   dplyr::mutate(
     new_plant = dplyr::case_when(conc >= 125 ~ "Tipo1",
                                  .default = "Tipo2")
-    
-    
-    )
+    ) %>% 
+  utils::head(1)
 ```
 
 # across()
 
-across() facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica select() dentro de funções de "mascaramento de dados" como summarise() e mutate(). 
+**across()** facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica **select()** dentro de funções de "mascaramento de dados" como **summarise()** e **mutate()**. 
 
-if_any() e if_all() aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico: if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas, if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas.
+**if_any()** e **if_all()** aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico: 
 
-Se você só precisa selecionar colunas sem aplicar uma transformação a cada uma delas, provavelmente desejará usar pick().
+- if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas
+- if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas
 
-across() substitui a família de "variantes com escopo definido" como summarise_at(), summarise_if() e summarise_all().
+Se você só precisa selecionar colunas sem aplicar uma transformação a cada uma delas, provavelmente desejará usar **pick()**.
+
+**across() substitui a família de "variantes com escopo definido" como summarise_at(), summarise_if() e summarise_all().**
 
 #
 
