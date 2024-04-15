@@ -643,10 +643,6 @@ Nós vimos que há uma suposição entre a média do vetor numérico de taxas de
 - Normalidade: verificamos a normalidade da variável dependente de cada grupo;
 - Homogeneidade de variâncias (ou seja, grupos com variâncias homogêneas).
 
-::: fragment
-**Para cada um dos testes, nós temos que seguir os 5 passos para a construção do teste de hipótese.**
-:::
-
 ## Normalidade
 
 Para verificar a normalidade dos dados, é recomendável utilizar o teste de **Shapiro WIlk** quando o número de amostra é menor que 50. A estatı́stica T é basicamente o quadrado de um coeficiente de correlação, onde o coeficiente de correlação de Pearson é calculado entre a estatı́stica ordenada X i na amostra e o escore ai , que representa o que a estatı́stica ordenada deveria parecer se a população é Normal. Portanto, as hipóteses levantadas são:
@@ -656,9 +652,9 @@ Para verificar a normalidade dos dados, é recomendável utilizar o teste de **S
 
 #
 
-Iremos utilizar o nível de 95% de significância.
+Iremos fixar o nível de 95% de significância.
 
-A estatística de teste já foi mencionado acima, mas vale frizar que vamos utilizar o teste de **Shapiro WIlk** .
+A estatística de teste já foi mencionada acima, mas vale frizar que vamos utilizar o teste de **Shapiro WIlk** .
 
 ```{r}
 #| message: false
@@ -666,17 +662,26 @@ A estatística de teste já foi mencionado acima, mas vale frizar que vamos util
 
 library(rstatix)
 
-teste_shapiro <- dados_iris %>% 
-                  dplyr::filter(Species != "versicolor") %>% 
-                  dplyr::group_by(Species) %>% 
-                  rstatix::shapiro_test(Sepal.Length)
+teste_shapiro <- dados_Carbon %>% 
+                  dplyr::group_by(Treatment) %>% 
+                  rstatix::shapiro_test(uptake)
 
 knitr::kable(teste_shapiro)
 ```
 
 #
 
-Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significância, **não rejeita-se a hipótese nula**, ou seja, a variável **Sepal.Length** é descrita por uma distribuição normal.
+Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significância, **rejeita-se a hipótese nula**, ou seja, a variável **uptake** não é descrita por uma distribuição normal.
+
+# E agora, faço o quê?
+
+# Transformação de Box-Cox
+
+
+
+
+
+
 
 ## Homogeneidade de variâncias
 
