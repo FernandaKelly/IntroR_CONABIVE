@@ -1136,7 +1136,9 @@ Fernanda Kelly R. Silva | Estatística
 2 chilled          23.8        42</code></pre>
 </div>
 </div>
-<p>Juntos <strong>group_by()</strong> e <strong>summarise()</strong> fornecem uma das ferramentas que você usará mais comumente ao trabalhar com <code>dplyr</code>: resumos agrupados.</p>
+<div class="fragment">
+<p><strong>Juntos group_by() e summarise() fornecem uma das ferramentas que você usará mais comumente ao trabalhar com <code>dplyr</code>: resumos agrupados.</strong></p>
+</div>
 </section>
 
 <section id="case_when" class="title-slide slide level1 center">
@@ -1150,6 +1152,10 @@ Fernanda Kelly R. Silva | Estatística
 <ul>
 <li>case_when() é um equivalente em R da CASE WHEN instrução <code>SQL</code> “pesquisada”.</li>
 </ul>
+</section>
+
+<section id="section-44" class="title-slide slide level1 center">
+<h1></h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a>dados_Carbon <span class="sc">%&gt;%</span> </span>
 <span id="cb49-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(</span>
@@ -1167,27 +1173,47 @@ Fernanda Kelly R. Silva | Estatística
 <section id="across" class="title-slide slide level1 center">
 <h1>across()</h1>
 <p><strong>across()</strong> facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica <strong>select()</strong> dentro de funções de “mascaramento de dados” como <strong>summarise()</strong> e <strong>mutate()</strong>.</p>
-<p><strong>if_any()</strong> e <strong>if_all()</strong> aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico:</p>
+<p><strong>if_any()</strong> e <strong>if_all()</strong> aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico.</p>
+</section>
+
+<section id="section-45" class="title-slide slide level1 center">
+<h1></h1>
 <ul>
 <li>if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas</li>
 <li>if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas</li>
 </ul>
 <p>Se você só precisa selecionar colunas sem aplicar uma transformação a cada uma delas, provavelmente desejará usar <strong>pick()</strong>.</p>
+<div class="fragment">
 <p><strong>across() substitui a família de “variantes com escopo definido” como summarise_at(), summarise_if() e summarise_all().</strong></p>
+</div>
 </section>
 
-<section id="section-44" class="title-slide slide level1 center">
+<section id="section-46" class="title-slide slide level1 center">
 <h1></h1>
 <p>Um exemplo bem rapidinho:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a>dados_Carbon<span class="sc">%&gt;%</span>   </span>
+<span id="cb51-2"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Treatment) <span class="sc">%&gt;%</span>   </span>
+<span id="cb51-3"><a href=""></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(dplyr<span class="sc">::</span><span class="fu">across</span>(<span class="fu">c</span>(conc,uptake), mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  Treatment   conc uptake
+  &lt;fct&gt;      &lt;dbl&gt;  &lt;dbl&gt;
+1 nonchilled   435   30.6
+2 chilled      435   23.8</code></pre>
+</div>
+</div>
+<div class="fragment">
 <p>Deixo o post no meu blog sobre <a href="https://www.fernandakellyrs.com/post/fun%C3%A7%C3%A3o-across">a função across</a> para vocês estudarem mais sobre ela.</p>
+</div>
 </section>
 
-<section id="pacote-esquisse" class="title-slide slide level1 center" data-background-image="img/esquisse.jpeg">
-<h1>Pacote Esquisse</h1>
+<section id="section-47" class="title-slide slide level1 center" data-background-image="img/esquisse.jpeg">
+<h1></h1>
 
 </section>
 
-<section id="section-45" class="title-slide slide level1 center">
+<section id="section-48" class="title-slide slide level1 center">
 <h1></h1>
 <p>O esquisse é um pacote que permite a criação de gráficos em {ggplot2} de maneira point and click, o que torna a construção de gráficos uma tarefa bem mais simples, pois não há necessidade de digitar as linhas de código.</p>
 <p>Além disso, é possível recuperar o código que gerou os gráficos, o que é ótimo para garantir a reprodutibilidade dos resultados!</p>
@@ -1198,17 +1224,35 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-46" class="title-slide slide level1 center">
+<section id="section-49" class="title-slide slide level1 center">
 <h1></h1>
 <p>Vamos brincar um pouco com essa aplicação.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">library</span>(esquisse)</span>
-<span id="cb51-2"><a href=""></a>esquisse<span class="sc">::</span><span class="fu">esquisser</span>(<span class="at">viewer =</span> <span class="st">"browser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">library</span>(esquisse)</span>
+<span id="cb53-2"><a href=""></a>esquisse<span class="sc">::</span><span class="fu">esquisser</span>(<span class="at">viewer =</span> <span class="st">"browser"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
-<section id="teste-de-hipóteses" class="title-slide slide level1 center">
-<h1>Teste de Hipóteses</h1>
+<section id="section-50" class="title-slide slide level1 center" data-background-image="img/teste_hipo.png">
+<h1></h1>
+
+</section>
+
+<section id="section-51" class="title-slide slide level1 center">
+<h1></h1>
+<p><u><strong>A parte final de uma análise estatı́stica, o teste de hipotese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.</strong></u></p>
+</section>
+
+<section id="section-52" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li><p>Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.</p></li>
+<li><p><strong>Muitos casos destes existem técnicas de transformações nos dados que produzem novos dados cuja distribuição se aproxime da normal</strong>. Caso isto não seja possı́vel as técnicas não-paramétricas são uma alternativa para análise estatı́stica.</p></li>
+</ul>
+</section>
+
+<section id="section-53" class="title-slide slide level1 center">
+<h1></h1>
 
 </section>
 

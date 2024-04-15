@@ -40,7 +40,7 @@ Eu sou uma mulher preta com **coragem** e que fez (e ainda faz) uma boa limonada
 
 # E sabe o que é o mais íncrivel de TUDO isso?
 
-# {background-color="#B048A2"}
+#  {background-color="#B048A2"}
 
 É que caminho ao lado de grandes mulheres.
 
@@ -124,10 +124,9 @@ Mas, por onde começar Fê?
 
 # ... são as boas práticas!
 
-#
+# 
 
 O ponto é: **vale mais a pena se esforçar para encontrar um par de meias no meio de uma gaveta bagunçada ou vale mais a pena se esforçar para arrumar uma gaveta bagunçada?**
-
 
 # Step 1 {background-color="#FDE962"}
 
@@ -137,23 +136,21 @@ Essa etapa do curso vai ser de muita troca e **live coding**. Vamos aprender as 
 
 # Step 2 {background-color="#FDE962"}
 
-# {background-image="img/tidyverse-default.png"}
+#  {background-image="img/tidyverse-default.png"}
 
+# 
 
-#
+O universo **Tidyverse** é basicamente uma coleção de pacotes voltados a ciência de dados.
 
-O universo **Tidyverse** é basicamente uma coleção de pacotes voltados a ciência de dados. 
+-   Estes pacotes tem filosofia, gramática e estruturas de dados em comum, ou seja, foram criadas para um pacote poder trabalhar em conjunto com o outro.
 
+#  {background-color="black"}
 
--   Estes pacotes tem filosofia, gramática e estruturas de dados  em comum, ou seja, foram criadas para um pacote poder trabalhar em conjunto com o outro. 
-
-# {background-color="black"}
-
-Os pacotes que fazem parte desse universo são: 
+Os pacotes que fazem parte desse universo são:
 
 ![](img/tidyverse_pacotes.jpeg)
 
-# {background-image="img/tidyverse_forma.png"}
+#  {background-image="img/tidyverse_forma.png"}
 
 # Dplyr
 
@@ -161,19 +158,20 @@ Os pacotes que fazem parte desse universo são:
 
 O pacote auxilia na manipulação de dados, realizando-a de forma eficiente e, com essas funções, temos uma flexibilidade incrível para transformar nossos dados.
 
-- rename(); distinct();   
+-   rename(); distinct();
 
-- select(); filter();
+-   select(); filter();
 
-- mutate(); transmute();
+-   mutate(); transmute();
 
-- arrange(); summarise(); 
+-   arrange(); summarise();
 
-- group_by(); sample_frac();
+-   group_by(); sample_frac();
 
-- sample_n().
+-   sample_n().
 
 # Mas antes de tudo...
+
 # ... precisamos de uma base de dados!
 
 # Base de dados
@@ -197,30 +195,29 @@ head(dados_Carbon,3)
 
 As variáveis que compõem o banco de dados são:
 
-- Plant: um fator ordenado com níveis Qn1 < Qn2 < Qn3 < ... < Mc1 fornecendo um identificador único para cada planta.
+-   Plant: um fator ordenado com níveis Qn1 \< Qn2 \< Qn3 \< ... \< Mc1 fornecendo um identificador único para cada planta.
 
-- Type: um fator com dois níveis, sendo eles **Quebec** e **Mississippi** dando a origem da planta.
+-   Type: um fator com dois níveis, sendo eles **Quebec** e **Mississippi** dando a origem da planta.
 
-- Treatment: um fator com dois níveis, sendo eles **nonchilled** e **chilled**.
+-   Treatment: um fator com dois níveis, sendo eles **nonchilled** e **chilled**.
 
-- conc: um vetor numérico de concentrações ambientais de dióxido de carbono (mL/L).
+-   conc: um vetor numérico de concentrações ambientais de dióxido de carbono (mL/L).
 
-- uptake: um vetor numérico de taxas de absorção de dióxido de carbono ($\mu mol/m^{2} sec$).
+-   uptake: um vetor numérico de taxas de absorção de dióxido de carbono ($\mu mol/m^{2} sec$).
 
 # Vamos aprender manipulação de dados?
 
 #  {background-image="img/featured.png"}
 
+# 
 
-#
-
-Pipes são uma ferramenta poderosa para expressar claramente uma sequência de múltiplas operações. A versão 4.0+ do R possui um pipe “nativo” **|>** que não depende da dependência do pacote magrittr. Aparentemente, ele deveria ser mais rápido que o pipe do pacote magrittr, por fazer muito mais “nos bastidores” do que o **%>%**. Você pode ler mais sobre isso em [R for Data Science](https://r4ds.had.co.nz/pipes.html). 
+Pipes são uma ferramenta poderosa para expressar claramente uma sequência de múltiplas operações. A versão 4.0+ do R possui um pipe “nativo” **\|\>** que não depende da dependência do pacote magrittr. Aparentemente, ele deveria ser mais rápido que o pipe do pacote magrittr, por fazer muito mais “nos bastidores” do que o **%\>%**. Você pode ler mais sobre isso em [R for Data Science](https://r4ds.had.co.nz/pipes.html).
 
 ```{r}
 library(magrittr)
 ```
 
-#
+# 
 
 Exemplo:
 
@@ -231,11 +228,12 @@ sum(round(mean(x),2),5)
 
 x %>% mean() %>% round(2) %>% sum(5)
 ```
----
+
+------------------------------------------------------------------------
 
 # rename()
 
-#
+# 
 
 A primeira função que vamos estudar é a *rename()*. Esta função irá *renomear* as variáveis do banco de dados. Vejamos o exemplo a seguir:
 
@@ -244,7 +242,8 @@ dados_Carbon %>%
   dplyr::rename("planta" = "Plant") %>% 
   utils::head(3)
 ```
-#
+
+# 
 
 Nós temos também a opção da função **rename_with**, em que podemos aplicar funções de interesse para renomear as variáveis.
 
@@ -254,11 +253,12 @@ dados_Carbon %>%
   #dplyr::rename_with(tolower) %>%
   utils::head(3)
 ```
-#
+
+# 
 
 Há também as seguintes variações:
 
-- rename_if
+-   rename_if
 
 ```{r}
 dados_Carbon %>% 
@@ -266,7 +266,7 @@ dados_Carbon %>%
   utils::head(1)
 ```
 
-- rename_at
+-   rename_at
 
 ```{r eval=FALSE}
 dados_Carbon %>% 
@@ -274,8 +274,9 @@ dados_Carbon %>%
   utils::head(1)
 ```
 
-#
-- rename_all
+# 
+
+-   rename_all
 
 ```{r}
 dados_Carbon %>% 
@@ -283,10 +284,9 @@ dados_Carbon %>%
   utils::head(1)
 ```
 
-
 # distinct()
 
-#
+# 
 
 A função **distinct()** seleciona apenas as linhas únicas (distintas) de uma determinada variável do banco de dados.
 
@@ -297,7 +297,7 @@ dados_Carbon %>%
 
 # select()
 
-#
+# 
 
 A função **select()** permite selecionar colunas nomeando-as e separando-as por vírgula ou não. Veremos exemplos abaixo.
 
@@ -315,7 +315,7 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-#
+# 
 
 Você pode selecionar colunas utilizando os dois pontos **:**, mas nesse caso, a seleção das colunas seguem a ideia de continuação. Por semplo:
 
@@ -325,16 +325,16 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-#
+# 
 
 Exisem funções no `dplyr` que ajudam na seleção das variáveis de uma outra forma:
 
-- starts_with(): colunas que começam com um prefixo
-- ends_with(): colunas que terminam com um sufixo
-- contains(): colunas que contêm uma string
-- last_col(): última coluna
+-   starts_with(): colunas que começam com um prefixo
+-   ends_with(): colunas que terminam com um sufixo
+-   contains(): colunas que contêm uma string
+-   last_col(): última coluna
 
-#
+# 
 
 ```{r}
 dados_Carbon %>% 
@@ -342,7 +342,7 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-#
+# 
 
 Esta função nos permite retirar colunas da base da seguinte forma:
 
@@ -356,7 +356,7 @@ dados_Carbon %>%
 
 # filter()
 
-#
+# 
 
 Já a função **filter()** permite subdividir observações com base em seus valores. O primeiro argumento é o nome do quadro de dados. O segundo argumento e os subsequentes são as expressões que filtram o quadro de dados.
 
@@ -373,34 +373,36 @@ dplyr::filter(dados_Carbon, Treatment == "nonchilled") %>%
   utils::head(3)
 ```
 
-#
+# 
 
-Você pode também utilizar essa função de forma eficaz, você precisa saber como selecionar as observações desejadas usando os operadores de comparação. O R fornece o conjunto padrão: >, >=, <, <=, != (diferente) e == (igual).
+Você pode também utilizar essa função de forma eficaz, você precisa saber como selecionar as observações desejadas usando os operadores de comparação. O R fornece o conjunto padrão: \>, \>=, \<, \<=, != (diferente) e == (igual).
 
 ```{r}
 dplyr::filter(dados_Carbon, conc <= 95) %>% 
   utils::head(3)
 ```
-#
 
-Vários argumentos do **filter()** são combinados com **“e”**: cada expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você mesmo precisará usar operadores booleanos: & é “e”, | é “ou” e ! é “não”. A Figura abaixo mostra o conjunto completo de operações booleanas.
+# 
+
+Vários argumentos do **filter()** são combinados com **“e”**: cada expressão deve ser verdadeira para que uma linha seja incluída na saída. Para outros tipos de combinações, você mesmo precisará usar operadores booleanos: & é “e”, \| é “ou” e ! é “não”. A Figura abaixo mostra o conjunto completo de operações booleanas.
 
 ![](img/boolenaos.jpeg)
 
-#
+# 
 
-No exemplo a seguir utilizamos o operador **<=** (menor igual) e o **&**:
+No exemplo a seguir utilizamos o operador **\<=** (menor igual) e o **&**:
 
 ```{r}
 dados_Carbon %>% 
   dplyr::filter(conc <= 95 & Treatment == "nonchilled") %>% 
   utils::head(3)
 ```
+
 **A função filter() também possui as variações filter_if(), filter_at() e filter_all().**
 
 # mutate()
 
-#
+# 
 
 Além de selecionar conjuntos de colunas existentes, geralmente é útil adicionar novas colunas que sejam funções de colunas existentes. Esse é o trabalho da função **mutate()**.
 
@@ -411,7 +413,8 @@ exemplo_mutate <- dados_Carbon %>%
                     dplyr::mutate(soma_numeric = conc + uptake,
                                   plant_trat = stringr::str_c(Plant, Treatment, sep = "-")) 
 ```
-#
+
+# 
 
 Observe que você pode consultar colunas que acabou de criar:
 
@@ -421,10 +424,9 @@ dados_Carbon %>%
  utils::head(3)
 ```
 
-
 # transmute()
 
-#
+# 
 
 Se você quiser apenas manter as novas variáveis, use a função **transmute()**:
 
@@ -437,15 +439,15 @@ exemplo_transmute <- dados_Carbon %>%
 
 # arrange()
 
-#
+# 
 
 A função **arrange()** orderna linhas.
 
-- Se a variável for categórica ordena por ordem alfabética
-- Se a variável for numérica ordena do menor para o maior
-- Se a varíavel for um fator, ordena pelos níveis do fator
+-   Se a variável for categórica ordena por ordem alfabética
+-   Se a variável for numérica ordena do menor para o maior
+-   Se a varíavel for um fator, ordena pelos níveis do fator
 
-#
+# 
 
 O exemplo abaixo ordena o banco de dados de acordo com a variável **uptake**.
 
@@ -455,7 +457,7 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-#
+# 
 
 Mas, nós podemos ordenar as linhas de forma decrescente usando a função **desc()**. Veja o exemplo abaixo.
 
@@ -465,7 +467,7 @@ dados_Carbon %>%
   utils::head(3)
 ```
 
-#
+# 
 
 É também possível ordenar mais de uma coluna de uma vez
 
@@ -477,7 +479,7 @@ dados_Carbon %>%
 
 # group_by()
 
-#
+# 
 
 Temos a função **group_by()** que irá agrupar o banco de dados em relação a uma variável (ou mais de uma).
 
@@ -486,13 +488,13 @@ dados_Carbon %>%
   dplyr::group_by(Treatment) 
 ```
 
-# {background-color="black"}
+#  {background-color="black"}
 
-Quando dados agrupados são passados para uma métrica com reconhecimento de grupo, eles retornarão valores de métrica calculados para cada grupo. 
+Quando dados agrupados são passados para uma métrica com reconhecimento de grupo, eles retornarão valores de métrica calculados para cada grupo.
 
 ![](img/group.jpeg)
 
-#
+# 
 
 Logo, se temos 2 tratamentos, e se quiséssemos calcular a média de cada grupo em relação a variável **conc**, precisaríamos que os dados estivessem agrupados de acordo com o tratamento.
 
@@ -502,7 +504,7 @@ Logo, se temos 2 tratamentos, e se quiséssemos calcular a média de cada grupo 
 
 # summarise()
 
-#
+# 
 
 O último verbo chave é o **summarise()**. Ele recolhe um quadro de dados em uma única linha.
 
@@ -512,7 +514,7 @@ A função **summarise()** não é muito útil, a menos que o combinemos com **g
 
 ![](img/summarize-a-variable-in-R.png)
 
-#
+# 
 
 Por exemplo, se aplicarmos exatamente o mesmo código a um quadro de dados agrupado por tratamento, obteremos o valor de **uptake** médio por tratamento:
 
@@ -522,17 +524,20 @@ dados_Carbon %>%
   dplyr::summarise(media_trat = base::mean(uptake, na.rm = TRUE),
                    n_plantas = dplyr::n())
 ```
+
 ::: fragment
 **Juntos group_by() e summarise() fornecem uma das ferramentas que você usará mais comumente ao trabalhar com `dplyr`: resumos agrupados.**
 :::
 
 # case_when()
 
-#
+# 
 
 O **case_when** é uma generalização do **if_else()**. Cada caso é avaliado sequencialmente e a primeira correspondência de cada elemento determina o valor correspondente no vetor de saída. Se nenhum caso corresponder, o **.default** será usado como uma instrução final "else".
 
-- case_when() é um equivalente em R da CASE WHEN instrução `SQL` "pesquisada".
+-   case_when() é um equivalente em R da CASE WHEN instrução `SQL` "pesquisada".
+
+# 
 
 ```{r}
 dados_Carbon %>% 
@@ -545,30 +550,38 @@ dados_Carbon %>%
 
 # across()
 
-**across()** facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica **select()** dentro de funções de "mascaramento de dados" como **summarise()** e **mutate()**. 
+**across()** facilita a aplicação da mesma transformação a múltiplas colunas, permitindo que você use a semântica **select()** dentro de funções de "mascaramento de dados" como **summarise()** e **mutate()**.
 
-**if_any()** e **if_all()** aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico: 
+**if_any()** e **if_all()** aplicam a mesma função de predicado a uma seleção de colunas e combinam os resultados em um único vetor lógico.
 
-- if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas
-- if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas
+# 
+
+-   if_any() é TRUE quando o predicado é TRUE para qualquer uma das colunas selecionadas
+-   if_all() é TRUE quando o predicado é TRUE para todas as colunas selecionadas
 
 Se você só precisa selecionar colunas sem aplicar uma transformação a cada uma delas, provavelmente desejará usar **pick()**.
 
+::: fragment
 **across() substitui a família de "variantes com escopo definido" como summarise_at(), summarise_if() e summarise_all().**
+:::
 
-#
+# 
 
 Um exemplo bem rapidinho:
 
 ```{r}
-
+dados_Carbon%>%   
+  dplyr::group_by(Treatment) %>%   
+  dplyr::summarise(dplyr::across(c(conc,uptake), mean, na.rm = TRUE))
 ```
 
+::: fragment
 Deixo o post no meu blog sobre [a função across](https://www.fernandakellyrs.com/post/fun%C3%A7%C3%A3o-across) para vocês estudarem mais sobre ela.
+:::
 
-# Pacote Esquisse {background-image="img/esquisse.jpeg"}
+#  {background-image="img/esquisse.jpeg"}
 
-#
+# 
 
 O esquisse é um pacote que permite a criação de gráficos em {ggplot2} de maneira point and click, o que torna a construção de gráficos uma tarefa bem mais simples, pois não há necessidade de digitar as linhas de código.
 
@@ -576,7 +589,7 @@ Além disso, é possível recuperar o código que gerou os gráficos, o que é �
 
 # Legal, né?
 
-#
+# 
 
 Vamos brincar um pouco com essa aplicação.
 
@@ -585,7 +598,18 @@ library(esquisse)
 esquisse::esquisser(viewer = "browser")
 ```
 
-# Teste de Hipóteses
+
+#  {background-image="img/teste_hipo.png"}
+
+#
+[**A parte final de uma análise estatı́stica, o teste de hipotese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.**]{.underline}
+
+# 
+
+-   Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.
+
+-   **Muitos casos destes existem técnicas de transformações nos dados que produzem novos dados cuja distribuição se aproxime da normal**. Caso isto não seja possı́vel as técnicas não-paramétricas são uma alternativa para análise estatı́stica.
+
+# 
 
 # K-Means
-
