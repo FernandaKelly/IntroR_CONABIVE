@@ -624,69 +624,19 @@ E se você tiver mais de duas amostras ou grupos?
 
 A resposta mais inocente seria realizar múltiplos testes t entre os diversos grupos e comparar o tamanho de efeito e p-valor dos testes. Porém essa abordagem possui uma falha: conforme aumenta o número de testes a taxa de falsos positivos (erros tipo I) aumentam quase na mesma proporção. **Esse erro ocorre quando rejeitamos a hipótese nula quando de fato ela é verdadeira.** 
 
-![](img/hipoteses_allison.png)
-
-::: footer
-Arte por [Allison Horst](https://mobile.twitter.com/allison_horst)
-:::
-
 # 
 
 Para comparação entre mais de duas amostras ou grupos, temos um conjunto de técnicas chamada análise de variância, conhecida como **Analysis of Variance (ANOVA)**.
 
 A ANOVA controla esses erros para que os falsos positivos (erros tipo I) permaneçam em 5% na comparação de média entre dois ou mais grupos. **A ANOVA não irá dizer com precisão como que as médias dos grupos diferem**, mas o seu resultado indica fortes evidências de que a diferença entre as médias dos grupos difere. Sua hipótese nula é que não há diferença entre as médias dos grupos.
 
-<!-- A ANOVA tradicional é uma técnica paramétrica (quando a variável dependente é distribuída conforme uma distribuição Normal), mas há também uma versão não-paramétrica (quando não temos pressupostos sobre de que distribuição probabilística a variável dependente é distribuída) chamada teste de Kruskal-Wallis. -->
-
-<!-- Após analisar os resultados de uma ANOVA, é muito comum realizar uma comparação post-hoc usando um conjunto de técnicas comparativas de média entre grupos que controlam a taxa de erro familiar. A principal técnica paramétrica é o teste de Tukey e a principal técnica não-paramétrica é o teste de Dunn. -->
-
 # Vamos de exemplo?
 
 # 
 
-Nós vimos que há uma suposição entre a média do tamanho da Sepal.Length de cada Species do banco de dados **iris**. Sendo assim, vamos levantar a seguinte hipótese entre as Species setosa e virginica:
+Nós vimos que há uma suposição entre a média do vetor numérico de taxas de absorção de dióxido de carbono se difere entre os tratamentos. Sendo assim, vamos levantar a seguinte hipótese entre os grupos nonchilled e chilled:
 
-- $H_{0}$ : Há uma diferença média entre as Species setosa e virginica em relação ao tamanho da Sepal.Length
-
-::: fragment
-E se você não sabe, há passos **obrigatórios** para a construção de um teste de hipótese. Vamos ver como é que funciona?
-:::
-
-# 
-
-::: fragment
-1. Enunciar as Hipóteses: Por exemplo:
-
--   $H_{0}$ : Não há diferença médias entre os grupos A e B;
--   $H_{1}$ : Há diferença média entre os grupos A e B;
-
-:::
-
-::: fragment
-2. Fixar o nı́vel de significância $\alpha$ do teste:
-
- $\alpha$ : Erro tipo I: Rejeitar $H_{0}$ quando é verdadeira.
-:::
-
-::: fragment
-3. Escolha da Estatı́stica teste adequada:
-
-A Estatística de teste vai depender da característica dos seus dados, mas no nosso caso, vamos utilizar o teste t independente.
-
-:::
-
-#
-
-::: fragment
-4.  Obtenção dos valores crı́ticos e Obtenção da Estatı́stica calculada:
-
-Encontramos esses valores na saída do teste.
-
-:::
-
-::: fragment
-5.  Conclusão e tomada de decisão.
-:::
+- $H_{0}$ : Há uma diferença média entreos grupos nonchilled e chilled em relação as taxas de absorção de dióxido de carbono
 
 ## Pressupostos
 
