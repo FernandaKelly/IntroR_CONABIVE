@@ -1233,18 +1233,14 @@ Fernanda Kelly R. Silva | Estatística
 </div>
 </section>
 
+<section>
 <section id="section-50" class="title-slide slide level1 center" data-background-image="img/teste_hipo.png">
 <h1></h1>
 
 </section>
-
-<section id="section-51" class="title-slide slide level1 center">
-<h1></h1>
-<p><strong>A parte final de uma análise estatı́stica, o teste de hipotese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.</strong></p>
-</section>
-
-<section id="section-52" class="title-slide slide level1 center">
-<h1></h1>
+<section id="section-51" class="slide level2">
+<h2></h2>
+<p><strong>A parte final de uma análise estatı́stica, o teste de hipótese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.</strong></p>
 <p>Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.</p>
 <aside class="notes">
 <ul>
@@ -1261,11 +1257,503 @@ Fernanda Kelly R. Silva | Estatística
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section></section>
+<section id="paramétricos" class="title-slide slide level1 center">
+<h1>Paramétricos</h1>
+<p>Há três principais tipos de testes t: o teste t para uma amostra, o teste t para duas amostras independentes (ou apenas teste t independente) e o teste t para duas amostras pareadas (ou teste t pareado). O teste t é um teste que verifica se há <strong>diferença média</strong> entre as amostras.</p>
+<div class="fragment">
+<p>E se você tiver mais de duas amostras ou grupos?</p>
+</div>
+</section>
+
+<section id="section-52" class="title-slide slide level1 center">
+<h1></h1>
+<p>A resposta mais inocente seria realizar múltiplos testes t entre os diversos grupos e comparar o tamanho de efeito e p-valor dos testes. Porém essa abordagem possui uma falha: conforme aumenta o número de testes a taxa de falsos positivos (erros tipo I) aumentam quase na mesma proporção. <strong>Esse erro ocorre quando rejeitamos a hipótese nula quando de fato ela é verdadeira.</strong></p>
 </section>
 
 <section id="section-53" class="title-slide slide level1 center">
 <h1></h1>
+<p>Para comparação entre mais de duas amostras ou grupos, temos um conjunto de técnicas chamada análise de variância, conhecida como <strong>Analysis of Variance (ANOVA)</strong>.</p>
+<p>A ANOVA controla esses erros para que os falsos positivos (erros tipo I) permaneçam em 5% na comparação de média entre dois ou mais grupos. <strong>A ANOVA não irá dizer com precisão como que as médias dos grupos diferem</strong>, mas o seu resultado indica fortes evidências de que a diferença entre as médias dos grupos difere. Sua hipótese nula é que não há diferença entre as médias dos grupos.</p>
+</section>
 
+<section id="vamos-de-exemplo" class="title-slide slide level1 center">
+<h1>Vamos de exemplo?</h1>
+
+</section>
+
+<section>
+<section id="section-54" class="title-slide slide level1 center">
+<h1></h1>
+<p>Nós vimos que há uma suposição entre a média do vetor numérico de taxas de absorção de dióxido de carbono se difere entre os tratamentos. Sendo assim, vamos levantar a seguinte hipótese entre os grupos nonchilled e chilled:</p>
+<ul>
+<li><span class="math inline">\(H_{0}\)</span> : Há uma diferença média entreos grupos nonchilled e chilled em relação as taxas de absorção de dióxido de carbono</li>
+</ul>
+</section>
+<section id="pressupostos" class="slide level2">
+<h2>Pressupostos</h2>
+<ul>
+<li>Normalidade: verificamos a normalidade da variável dependente de cada grupo;</li>
+<li>Homogeneidade de variâncias (ou seja, grupos com variâncias homogêneas).</li>
+</ul>
+</section>
+<section id="normalidade" class="slide level2">
+<h2>Normalidade</h2>
+<p>Para verificar a normalidade dos dados, é recomendável utilizar o teste de <strong>Shapiro WIlk</strong> quando o número de amostra é menor que 50. A estatı́stica T é basicamente o quadrado de um coeficiente de correlação, onde o coeficiente de correlação de Pearson é calculado entre a estatı́stica ordenada X i na amostra e o escore ai , que representa o que a estatı́stica ordenada deveria parecer se a população é Normal. Portanto, as hipóteses levantadas são:</p>
+<ul>
+<li><span class="math inline">\(H_{0}\)</span> : F(x) é função de distribuição normal;</li>
+<li><span class="math inline">\(H_{1}\)</span> : F(x) não é função de distribuição normal;</li>
+</ul>
+</section></section>
+<section id="section-55" class="title-slide slide level1 center">
+<h1></h1>
+<p>Iremos fixar o nível de 95% de significância.</p>
+<p>A estatística de teste já foi mencionada acima, mas vale frizar que vamos utilizar o teste de <strong>Shapiro WIlk</strong> .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href=""></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb54-2"><a href=""></a></span>
+<span id="cb54-3"><a href=""></a>teste_shapiro <span class="ot">&lt;-</span> dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb54-4"><a href=""></a>                  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-5"><a href=""></a>                  rstatix<span class="sc">::</span><span class="fu">shapiro_test</span>(uptake)</span>
+<span id="cb54-6"><a href=""></a></span>
+<span id="cb54-7"><a href=""></a>knitr<span class="sc">::</span><span class="fu">kable</span>(teste_shapiro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Treatment</th>
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nonchilled</td>
+<td style="text-align: left;">uptake</td>
+<td style="text-align: right;">0.9450490</td>
+<td style="text-align: right;">0.0430199</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">chilled</td>
+<td style="text-align: left;">uptake</td>
+<td style="text-align: right;">0.8978853</td>
+<td style="text-align: right;">0.0012451</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="section-56" class="title-slide slide level1 center">
+<h1></h1>
+<p>Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significância, <strong>rejeita-se a hipótese nula</strong>, ou seja, a variável <strong>uptake</strong> não é descrita por uma distribuição normal.</p>
+</section>
+
+<section id="e-agora-faço-o-quê" class="title-slide slide level1 center">
+<h1>E agora, faço o quê?</h1>
+
+</section>
+
+<section id="transformação-de-box-cox" class="title-slide slide level1 center">
+<h1>Transformação de Box-Cox</h1>
+<p>Em estatística, uma transformação de potência é uma família de funções que são aplicadas para criar a transformação monotônica de dados usando funções de potência. Esta é uma técnica de transformação de dados útil usada para estabilizar a variância, tornar os dados mais semelhantes à distribuição normal, melhorar a validade das medidas de associação (como a correlação de Pearson entre as variáveis) e para outros procedimentos de estabilização de dados.</p>
+</section>
+
+<section id="section-57" class="title-slide slide level1 center">
+<h1></h1>
+<p><strong>A transformação de Box-Cox recebeu o nome dos estatísticos que a formularam, George E. P. Box y David Cox, em artigo de 1964 (“An Analysis of Transformations”).</strong></p>
+</section>
+
+<section id="section-58" class="title-slide slide level1 center">
+<h1></h1>
+<p>Essa transformação consiste em transformar os dados de aordo com a seguinte expressão:</p>
+<ul>
+<li><span class="math inline">\(y' = \frac{y^\lambda - 1}{\lambda}\)</span></li>
+</ul>
+<p>onde <span class="math inline">\(\lambda\)</span> é um parâmetro a ser estimado dos dados. Se <span class="math inline">\(\lambda = 0\)</span>, temos:</p>
+<ul>
+<li><span class="math inline">\(y' = ln(y)\)</span></li>
+</ul>
+<p><strong>Então a nossa missão é encontrar o valor de <span class="math inline">\(\lambda\)</span>.</strong></p>
+</section>
+
+<section id="section-59" class="title-slide slide level1 center">
+<h1></h1>
+<p>Nós vamos utilizar o pacote <code>MASS</code> para obter o valor de interesse para executar a transformação.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href=""></a>lambda <span class="ot">&lt;-</span> MASS<span class="sc">::</span><span class="fu">boxcox</span>(<span class="fu">aov</span>(uptake<span class="fl">+0.000001</span><span class="sc">~</span>Treatment,  <span class="at">data =</span> dados_Carbon ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href=""></a>lambda<span class="sc">$</span>x[<span class="fu">which.max</span>(lambda<span class="sc">$</span>y)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8282828</code></pre>
+</div>
+</div>
+<img data-src="Slides_files/figure-revealjs/unnamed-chunk-33-1.png" width="960" class="r-stretch"></section>
+
+<section id="section-60" class="title-slide slide level1 center">
+<h1></h1>
+<p>Desta forma o próximo passo é obter os dados transformados e depois realizar as análises utilizando estes novos dados.</p>
+<p>Nós aprendemos a função <strong>mutate</strong> e agora vamos utilizá-la para criar essa nova variável.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href=""></a>dados_Carbon <span class="ot">&lt;-</span> dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb59-2"><a href=""></a>                  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">new_uptake =</span> ((uptake<span class="sc">^</span><span class="fl">0.8282828</span>) <span class="sc">-</span> <span class="dv">1</span>)<span class="sc">/</span><span class="fl">0.8282828</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p>Vamos plotar essa nova variável?</p>
+</div>
+</section>
+
+<section id="section-61" class="title-slide slide level1 center">
+<h1></h1>
+<p>O resultado nos demonstra que, novamente, a variável de interesse não é descrita pela distribuição normal ao nível de 95% de significância.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href=""></a><span class="fu">library</span>(rstatix)</span>
+<span id="cb60-2"><a href=""></a></span>
+<span id="cb60-3"><a href=""></a>teste_shapiro2 <span class="ot">&lt;-</span> dados_Carbon <span class="sc">%&gt;%</span> </span>
+<span id="cb60-4"><a href=""></a>                  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Treatment) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-5"><a href=""></a>                  rstatix<span class="sc">::</span><span class="fu">shapiro_test</span>(new_uptake)</span>
+<span id="cb60-6"><a href=""></a></span>
+<span id="cb60-7"><a href=""></a>knitr<span class="sc">::</span><span class="fu">kable</span>(teste_shapiro2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Treatment</th>
+<th style="text-align: left;">variable</th>
+<th style="text-align: right;">statistic</th>
+<th style="text-align: right;">p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">nonchilled</td>
+<td style="text-align: left;">new_uptake</td>
+<td style="text-align: right;">0.9362075</td>
+<td style="text-align: right;">0.0210991</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">chilled</td>
+<td style="text-align: left;">new_uptake</td>
+<td style="text-align: right;">0.9067580</td>
+<td style="text-align: right;">0.0023080</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="eita-e-agora" class="title-slide slide level1 center">
+<h1>Eita! E agora?</h1>
+
+</section>
+
+<section id="section-62" class="title-slide slide level1 center">
+<h1></h1>
+<p>Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.</p>
+<p>Muitos casos destes existem técnicas de transformações nos dados que produzem novos dados cuja distribuição se aproxime da normal. Caso isto não seja possı́vel as técnicas não-paramétricas são uma alternativa para análise estatı́stica.</p>
+<p>Um teste não-paramétrico é aquele cujo modelo não especifica condições sobre os parâmetros da população da qual a amostra foi obtida.</p>
+</section>
+
+<section id="e-porquê-eu-usaria-esse-método" class="title-slide slide level1 center">
+<h1>E porquê eu usaria esse método?</h1>
+
+</section>
+
+<section id="section-63" class="title-slide slide level1 center">
+<h1></h1>
+<ol type="1">
+<li>São menos exigentes, restritivos, do que os testes paramétricos, pois dispensam a normalidade dos dados;</li>
+</ol>
+<div class="fragment">
+<ol start="2" type="1">
+<li>Em geral, as probabilidades das afirmativas são probabilidades exatas, salvo que se usam algumas aproximações para grandes amostras;</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Independem da forma da população da qual a amostra foi obtida;</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="4" type="1">
+<li>Os cálculos são relativamente fáceis;</li>
+</ol>
+</div>
+</section>
+
+<section id="section-64" class="title-slide slide level1 center">
+<h1></h1>
+<ol start="5" type="1">
+<li>Alguns testes não-paramétricos permitem trabalhar com dados de diferentes populações, ao contrário dos paramétricos;</li>
+</ol>
+<div class="fragment">
+<ol start="6" type="1">
+<li>São úteis nos casos em que é difı́cil estabelecer uma escala de valores quantitativos para os dados, por exemplo, escalas ordinais quantitativas (de ansiedade - psiquiatria) ou escalas ordinais qualitativas (ruim-bom-ótimo);</li>
+</ol>
+</div>
+<div class="fragment">
+<ol start="7" type="1">
+<li>São mais eficientes que os paramétricos quando não há pressuposição de normalidade - Os testes paramétricos são mais poderosos se os pressupostos são verificados.</li>
+</ol>
+</div>
+</section>
+
+<section id="trocando-de-banco-de-dados" class="title-slide slide level1 center">
+<h1>Trocando de banco de dados…</h1>
+
+</section>
+
+<section>
+<section id="banco-de-dados-iris" class="title-slide slide level1 center">
+<h1>Banco de dados Iris</h1>
+<p>Este famoso conjunto de dados de íris (de Fisher ou Anderson) fornece as medidas em centímetros das variáveis comprimento e largura da sépala e comprimento e largura da pétala, respectivamente, para 50 flores de cada uma das 3 espécies de íris. As espécies são Iris setosa, versicolor e virginica.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href=""></a><span class="fu">library</span>(datasets)</span>
+<span id="cb61-2"><a href=""></a>dados_iris <span class="ot">&lt;-</span> datasets<span class="sc">::</span>iris </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="homogeneidade-de-variâncias" class="slide level2">
+<h2>Homogeneidade de variâncias</h2>
+<p>O segundo pressuposto pode ser avaliado através do <strong>teste de Levene</strong>, em que as hipóteses são:</p>
+<ul>
+<li><span class="math inline">\(H_{0}\)</span> : Os grupos apresentam variâncias homogêneas;</li>
+<li><span class="math inline">\(H_{1}\)</span> : Os grupos não apresentam variâncias homogêneas;</li>
+</ul>
+<p>Vamos considerar o nível de 95% de significância.</p>
+</section></section>
+<section id="section-65" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">library</span>(car)</span>
+<span id="cb62-2"><a href=""></a>teste_levene <span class="ot">&lt;-</span> dados_iris <span class="sc">%&gt;%</span> </span>
+<span id="cb62-3"><a href=""></a>                  dplyr<span class="sc">::</span><span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">"versicolor"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb62-4"><a href=""></a>                  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Species) </span>
+<span id="cb62-5"><a href=""></a></span>
+<span id="cb62-6"><a href=""></a>teste_levene_Resultado <span class="ot">&lt;-</span> car<span class="sc">::</span><span class="fu">leveneTest</span>(Sepal.Length <span class="sc">~</span> Species,</span>
+<span id="cb62-7"><a href=""></a>                                          <span class="at">data =</span> teste_levene, </span>
+<span id="cb62-8"><a href=""></a>                                          <span class="at">center =</span> mean)</span>
+<span id="cb62-9"><a href=""></a>knitr<span class="sc">::</span><span class="fu">kable</span>(teste_levene_Resultado)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Df</th>
+<th style="text-align: right;">F value</th>
+<th style="text-align: right;">Pr(&gt;F)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">group</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">13.70568</td>
+<td style="text-align: right;">0.0003534</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section id="section-66" class="title-slide slide level1 center">
+<h1></h1>
+<p>Logo, ao nível de 95% de significância, <strong>rejeitamos a hipótese nula</strong> (p-value = 0.0003), ou seja, os grupos apresentam não variâncias homogêneas e assim não podemos seguir com o teste t independente.</p>
+<div class="fragment">
+<p><strong>Violamos o pressuposto de variâncias homogêneas, e agora?</strong></p>
+</div>
+<div class="fragment">
+<p>Nós poderemos seguir com o teste-t, mas deveremos usar um teste-t com correção para essa violação da homogeneidade, a <strong>correção de Welch</strong>.</p>
+</div>
+</section>
+
+<section id="partiu-teste-fê" class="title-slide slide level1 center">
+<h1>Partiu teste, Fê?</h1>
+
+</section>
+
+<section id="se-liga-só-no-teste-e-em-suas-miniciosidades." class="title-slide slide level1 center">
+<h1>…se liga só no teste e em suas miniciosidades.</h1>
+
+</section>
+
+<section id="section-67" class="title-slide slide level1 center">
+<h1></h1>
+<p>Como violamos o teste de homogeinidade de variâncias, vamos programar com <strong>var.equal=FALSE</strong>, mas uma vez que o pressuposto da homogeneidade de variâncias foi atendido, colocaremos <strong>var.equal=TRUE</strong>.</p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href=""></a>stats<span class="sc">::</span><span class="fu">t.test</span>(Sepal.Length <span class="sc">~</span> Species,</span>
+<span id="cb63-2"><a href=""></a>              <span class="at">data =</span> teste_levene,</span>
+<span id="cb63-3"><a href=""></a>              <span class="at">var.equal =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Sepal.Length by Species
+t = -15.386, df = 76.516, p-value &lt; 2.2e-16
+alternative hypothesis: true difference in means between group setosa and group virginica is not equal to 0
+95 percent confidence interval:
+ -1.78676 -1.37724
+sample estimates:
+   mean in group setosa mean in group virginica 
+                  5.006                   6.588 </code></pre>
+</div>
+</div>
+</div>
+</section>
+
+<section id="section-68" class="title-slide slide level1 center">
+<h1></h1>
+<p>Qual é a interpretação dessa saída?</p>
+<div class="fragment">
+<p><strong>Ao nível de 95% de significância, nós rejeitamos a <span class="math inline">\(H_{0}\)</span> e assim há diferença média entre as Species e o tamanho da Sepal.Length.</strong></p>
+</div>
+<div class="fragment">
+<p>Se o nosso interesse for comparar os três tipos de Species, devemos utilizar a ANOVA e, para um melhor entendimento da diferença, utilizariamos o teste de Tukey para apontar quais grupos são diferentes entre si.</p>
+</div>
+</section>
+
+<section id="section-69" class="title-slide slide level1 center">
+<h1></h1>
+<p>Mas antes de tudo…</p>
+</section>
+
+<section>
+<section id="teste-t" class="title-slide slide level1 center">
+<h1>Teste t</h1>
+
+</section>
+<section id="paired-true" class="slide level2">
+<h2>paired = TRUE</h2>
+<p>Em algumas situações o par de amostras é constituı́do do mesmo indivı́duo em duas ocasiões diferentes. Essa ocasiação nós denominamos por <strong>pareamento</strong>, em que neste pareamento podemos distingui-lo em três tipos: auto-pareamento, pareamento natural e pareamento artificial.</p>
+</section></section>
+<section id="section-70" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li>O auto-pareamento ocorre quando o indivı́duo serve como seu próprio controle, como na situação em que um indivı́duo recebe duas drogas administradas em ocasiões diferentes. Outra situação é a que um tratamento é administrado e as variáveis de interesse são observadas antes e depois do programa. Finalmente, a comparação de dois órgãos no mesmo indivı́duo, como braços, pernas, olhos, narinas, segundo alguma caracterı́stica estudada também constitui um auto-pareamento.</li>
+</ul>
+</section>
+
+<section id="section-71" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li><p>O pareamento natural consiste em formar pares tão homogêneos quanto possı́vel, controlando os fatores que possam interferir na resposta, sendo que o pareamento aparece de forma natural. Por exemplo, em experimentos de laboratório pode-se formar pares de cobaias selecionadas da mesma ninhada; em investigações clı́nicas, gêmeos univitelinos são muito usados.</p></li>
+<li><p>No pareamento artificial escolhe-se indivı́duos com caracterı́sticas semelhantes, tais como, idade, sexo, nı́vel sócio-econômico, estado de saúde ou, em geral, fatores que podem influenciar de maneira relevante a variável resposta.</p></li>
+</ul>
+</section>
+
+<section>
+<section id="section-72" class="title-slide slide level1 center">
+<h1></h1>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">t.test</span>(x, ...)</span>
+<span id="cb65-2"><a href=""></a></span>
+<span id="cb65-3"><a href=""></a><span class="do">## Default S3 method:</span></span>
+<span id="cb65-4"><a href=""></a><span class="fu">t.test</span>(x, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb65-5"><a href=""></a>       <span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>),</span>
+<span id="cb65-6"><a href=""></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb65-7"><a href=""></a>       <span class="sc">**</span><span class="at">paired =</span> <span class="cn">FALSE</span><span class="sc">**</span>,</span>
+<span id="cb65-8"><a href=""></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb65-9"><a href=""></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>, ...)</span>
+<span id="cb65-10"><a href=""></a></span>
+<span id="cb65-11"><a href=""></a><span class="do">## S3 method for class 'formula'</span></span>
+<span id="cb65-12"><a href=""></a><span class="fu">t.test</span>(formula, data, subset, na.action, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="alternative-ctwo.sided-less-greater" class="slide level2">
+<h2>alternative = c(“two.sided”, “less”, “greater”)</h2>
+<p>A hipótese alternativa mais comum - e a mais recomendada, salvo raras exceções - é a de que há uma diferença entre os grupos. Observe que aqui estamos estabelecendo apenas que, caso os grupos não sejam iguais, eles serão diferentes. Não estamos nos comprometendo com o sentido dessa diferença, se o grupo A terá uma média superior ou inferior à do grupo B. No entanto, é possível construirmos hipóteses alternativas que estabeleçam o sentido dessa diferença:</p>
+</section></section>
+<section id="section-73" class="title-slide slide level1 center">
+<h1></h1>
+<ul>
+<li><span class="math inline">\(H_{1}\)</span> : média do grupo A &gt; média do grupo B</li>
+<li><span class="math inline">\(H_{1}\)</span> : média do grupo A &lt; média do grupo B</li>
+</ul>
+
+<img data-src="img/bilateral.png" class="r-stretch"><div class="footer">
+<p>Arte por <a href="https://mobile.twitter.com/allison_horst">Allison Horst</a></p>
+</div>
+</section>
+
+<section id="section-74" class="title-slide slide level1 center">
+<h1></h1>
+<div class="sourceCode" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">t.test</span>(x, ...)</span>
+<span id="cb66-2"><a href=""></a></span>
+<span id="cb66-3"><a href=""></a><span class="do">## Default S3 method:</span></span>
+<span id="cb66-4"><a href=""></a><span class="fu">t.test</span>(x, <span class="at">y =</span> <span class="cn">NULL</span>,</span>
+<span id="cb66-5"><a href=""></a>       <span class="sc">**</span><span class="at">alternative =</span> <span class="fu">c</span>(<span class="st">"two.sided"</span>, <span class="st">"less"</span>, <span class="st">"greater"</span>)<span class="sc">**</span>,</span>
+<span id="cb66-6"><a href=""></a>       <span class="at">mu =</span> <span class="dv">0</span>,</span>
+<span id="cb66-7"><a href=""></a>       <span class="at">paired =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb66-8"><a href=""></a>       <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb66-9"><a href=""></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>, ...)</span>
+<span id="cb66-10"><a href=""></a></span>
+<span id="cb66-11"><a href=""></a><span class="do">## S3 method for class 'formula'</span></span>
+<span id="cb66-12"><a href=""></a><span class="fu">t.test</span>(formula, data, subset, na.action, ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="anova" class="title-slide slide level1 center">
+<h1>ANOVA</h1>
+
+</section>
+
+<section id="bem-rapidinho-pode-ser" class="title-slide slide level1 center">
+<h1>… bem rapidinho, pode ser?</h1>
+
+</section>
+
+<section id="section-75" class="title-slide slide level1 center">
+<h1></h1>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href=""></a>anova <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">aov</span>(Sepal.Length <span class="sc">~</span> Species, dados_iris)</span>
+<span id="cb67-2"><a href=""></a><span class="fu">summary</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Df Sum Sq Mean Sq F value Pr(&gt;F)    
+Species       2  63.21  31.606   119.3 &lt;2e-16 ***
+Residuals   147  38.96   0.265                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Qual é a interpretação desse teste?</p>
+</div>
+</section>
+
+<section id="section-76" class="title-slide slide level1 center">
+<h1></h1>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href=""></a>stats<span class="sc">::</span><span class="fu">TukeyHSD</span>(anova)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: stats::aov(formula = Sepal.Length ~ Species, data = dados_iris)
+
+$Species
+                      diff       lwr       upr p adj
+versicolor-setosa    0.930 0.6862273 1.1737727     0
+virginica-setosa     1.582 1.3382273 1.8257727     0
+virginica-versicolor 0.652 0.4082273 0.8957727     0</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Onde há diferença?</p>
+</div>
 </section>
 
 <section id="k-means" class="title-slide slide level1 center">

@@ -601,10 +601,9 @@ esquisse::esquisser(viewer = "browser")
 
 #  {background-image="img/teste_hipo.png"}
 
-#
-**A parte final de uma análise estatı́stica, o teste de hipotese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.**
+##
 
-# 
+**A parte final de uma análise estatı́stica, o teste de hipótese (T.H.), se dá pela tomada de decisão relativa a um problema de interesse, digamos, verificar se há associação entre um fator (adubo) e o tamanho de uma planta (mangueira) na experimentação agronômica.**
 
 Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.
 
@@ -679,7 +678,9 @@ Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significânc
 
 Em estatística, uma transformação de potência é uma família de funções que são aplicadas para criar a transformação monotônica de dados usando funções de potência. Esta é uma técnica de transformação de dados útil usada para estabilizar a variância, tornar os dados mais semelhantes à distribuição normal, melhorar a validade das medidas de associação (como a correlação de Pearson entre as variáveis) e para outros procedimentos de estabilização de dados.
 
-A transformação de Box-Cox recebeu o nome dos estatísticos que a formularam, George E. P. Box y David Cox, em artigo de 1964 (“An Analysis of Transformations”).
+#
+
+**A transformação de Box-Cox recebeu o nome dos estatísticos que a formularam, George E. P. Box y David Cox, em artigo de 1964 (“An Analysis of Transformations”).**
 
 #
 
@@ -706,9 +707,9 @@ lambda <- MASS::boxcox(aov(uptake+0.000001~Treatment,  data = dados_Carbon ))
 lambda$x[which.max(lambda$y)]
 ```
 
-Desta forma o próximo passo é obter os dados transformados e depois realizar as análises utilizando estes novos dados.
-
 #
+
+Desta forma o próximo passo é obter os dados transformados e depois realizar as análises utilizando estes novos dados.
 
 Nós aprendemos a função **mutate** e agora vamos utilizá-la para criar essa nova variável.
 
@@ -778,6 +779,15 @@ Um teste não-paramétrico é aquele cujo modelo não especifica condições sob
 7. São mais eficientes que os paramétricos quando não há pressuposição de normalidade - Os testes paramétricos são mais poderosos se os pressupostos são verificados.
 :::
 
+#
+
+Os teste não paramétricos não serão o nosso foco aqui, mas deixo o nome de cada um e sua equivalência para que vocês estudem futuramente:
+
+-
+-
+-
+-
+
 # Trocando de banco de dados...
 
 # Banco de dados Iris
@@ -788,10 +798,6 @@ Este famoso conjunto de dados de íris (de Fisher ou Anderson) fornece as medida
 library(datasets)
 dados_iris <- datasets::iris 
 ```
-
-#
-
-
 
 ## Homogeneidade de variâncias
 
