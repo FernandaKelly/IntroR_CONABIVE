@@ -783,10 +783,10 @@ Um teste não-paramétrico é aquele cujo modelo não especifica condições sob
 
 Os teste não paramétricos não serão o nosso foco aqui, mas deixo o nome de cada um e sua equivalência para que vocês estudem futuramente:
 
--
--
--
--
+- Mann-Whitney
+- Wilcoxon
+- Kruskal-Wallis
+- Teste de Dunn  (Procedimento de Bonferroni)
 
 # Trocando de banco de dados...
 
