@@ -677,6 +677,15 @@ Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significânc
 
 # Transformação de Box-Cox
 
+Em estatística, uma transformação de potência é uma família de funções que são aplicadas para criar a transformação monotônica de dados usando funções de potência. Esta é uma técnica de transformação de dados útil usada para estabilizar a variância, tornar os dados mais semelhantes à distribuição normal, melhorar a validade das medidas de associação (como a correlação de Pearson entre as variáveis) e para outros procedimentos de estabilização de dados.
+
+A transformação de Box-Cox recebeu o nome dos estatísticos que a formularam, George E. P. Box y David Cox, em artigo de 1964 (“An Analysis of Transformations”).
+#
+
+```{r}
+bc <- MASS::boxcox(aov(uptake+0.000001~Treatment,  data = dados_Carbon ))
+bc$x[which.max(bc$y)]
+```
 
 
 
