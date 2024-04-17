@@ -982,9 +982,7 @@ Onde há diferença?
 
 Tá aí um algoritmo muito falado na área de ciência de dados e, apesar de estar na 'boca do povo' há uns 5 anos, seus princípios são bem mais velhos do que isso. 
 
-O K-Means é um algoritmo de aprendizagem não supervisionada. Ele não classifica, mas agrupa vetores de atributos similares, isto é, coloca em um mesmo agrupamento vetores similares, e por este ser computacionalmente simples e funcionar bem na prática, ele é um dos principais e mais usados métodos de agrupamento (DUDA; HART, 1973).  
-
-Só no Google Acadêmico com a pesquisa "K-means" há mais de 8 mil artigos publicados. São artigos com aplicação em diversas áreas e claro que muitos são artigos 'palpiteros' que indicam algum tipo de alteração no desenrolar do algoritmo. 
+O K-Means é um algoritmo de aprendizagem não supervisionada. Ele não classifica, mas agrupa vetores de atributos similares, isto é, coloca em um mesmo agrupamento vetores similares, e por este ser computacionalmente simples e funcionar bem na prática, ele é um dos principais e mais usados métodos de agrupamento (DUDA; HART, 1973). 
 
 #
 
