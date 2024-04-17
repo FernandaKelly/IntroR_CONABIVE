@@ -680,12 +680,50 @@ Veja que de acordo com o teste de Shapiro Wilk, ao nível de 95% de significânc
 Em estatística, uma transformação de potência é uma família de funções que são aplicadas para criar a transformação monotônica de dados usando funções de potência. Esta é uma técnica de transformação de dados útil usada para estabilizar a variância, tornar os dados mais semelhantes à distribuição normal, melhorar a validade das medidas de associação (como a correlação de Pearson entre as variáveis) e para outros procedimentos de estabilização de dados.
 
 A transformação de Box-Cox recebeu o nome dos estatísticos que a formularam, George E. P. Box y David Cox, em artigo de 1964 (“An Analysis of Transformations”).
+
 #
 
+Essa transformação consiste em transformar os dados de aordo com a seguinte expressão:
+
+- $y' = \frac{y^\lambda - 1}{\lambda}$
+
+onde $\lambda$ é um parâmetro a ser estimado dos dados. Se $\lambda = 0$, temos:
+
+- $y' = ln(y)$
+
+**Então a nossa missão é encontrar o valor de $\lambda$.**
+
+#
+
+Nós vamos utilizar o pacote `MASS` para obter o valor de interesse para executar a transformação. 
+
 ```{r}
-bc <- MASS::boxcox(aov(uptake+0.000001~Treatment,  data = dados_Carbon ))
-bc$x[which.max(bc$y)]
+library(MASS)
 ```
+
+```{r}
+lambda <- MASS::boxcox(aov(uptake+0.000001~Treatment,  data = dados_Carbon ))
+lambda$x[which.max(lambda$y)]
+```
+
+Desta forma o próximo passo é obter os dados transformados e depois realizar as análises utilizando estes novos dados.
+
+#
+
+Nós aprendemos a função **mutate** e agora vamos utilizá-la para criar essa nova variável.
+
+```{r}
+dados_Carbon <- dados_Carbon %>% 
+                  dplyr::mutate(new_uptake = ((uptake^0.8282828) - 1)/0.8282828)
+```
+
+::: fragment
+Vamos plotar essa nova variável?
+:::
+
+
+#
+
 
 
 
