@@ -724,9 +724,72 @@ Vamos plotar essa nova variável?
 
 #
 
+O resultado nos demonstra que, novamente, a variável de interesse não é descrita pela distribuição normal ao nível de 95% de significância.
+
+```{r}
+library(rstatix)
+
+teste_shapiro2 <- dados_Carbon %>% 
+                  dplyr::group_by(Treatment) %>% 
+                  rstatix::shapiro_test(new_uptake)
+
+knitr::kable(teste_shapiro2)
+```
 
 
+# Eita! E agora?
 
+#
+
+Na prática experimental é comum o surgimento de situações em que não se tem o conhecimento da distribuição dos dados, ou mesmo que o tenha, os mesmos podem não ter a distribuição normal. A alta dispersão ou até mesmo assimetria, ou ambos, fazem com que o trato com os dados seja dificultado.
+
+Muitos casos destes existem técnicas de transformações nos dados que produzem novos dados cuja distribuição se aproxime da normal. Caso isto não seja possı́vel as técnicas não-paramétricas são uma alternativa para análise estatı́stica.
+
+Um teste não-paramétrico é aquele cujo modelo não especifica condições sobre os parâmetros da população da qual a amostra foi obtida.
+
+
+# E porquê eu usaria esse método?
+
+#
+
+1. São menos exigentes, restritivos, do que os testes paramétricos, pois dispensam a normalidade dos dados;
+
+::: fragment
+2. Em geral, as probabilidades das afirmativas são probabilidades exatas, salvo que se usam algumas aproximações para grandes amostras;
+:::
+
+::: fragment
+3. Independem da forma da população da qual a amostra foi obtida;
+:::
+
+::: fragment
+4. Os cálculos são relativamente fáceis;
+:::
+
+#
+
+5. Alguns testes não-paramétricos permitem trabalhar com dados de diferentes populações, ao contrário dos paramétricos;
+
+::: fragment
+6. São úteis nos casos em que é difı́cil estabelecer uma escala de valores quantitativos para os dados, por exemplo, escalas ordinais quantitativas (de ansiedade - psiquiatria) ou escalas ordinais qualitativas (ruim-bom-ótimo);
+:::
+
+::: fragment
+7. São mais eficientes que os paramétricos quando não há pressuposição de normalidade - Os testes paramétricos são mais poderosos se os pressupostos são verificados.
+:::
+
+# Trocando de banco de dados...
+
+# Banco de dados Iris
+
+Este famoso conjunto de dados de íris (de Fisher ou Anderson) fornece as medidas em centímetros das variáveis comprimento e largura da sépala e comprimento e largura da pétala, respectivamente, para 50 flores de cada uma das 3 espécies de íris. As espécies são Iris setosa, versicolor e virginica.
+
+```{r}
+library(datasets)
+dados_iris <- datasets::iris 
+```
+
+#
 
 
 
