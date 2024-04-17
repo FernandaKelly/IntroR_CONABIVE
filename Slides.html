@@ -1504,6 +1504,17 @@ Fernanda Kelly R. Silva | Estatística
 </div>
 </section>
 
+<section id="section-65" class="title-slide slide level1 center">
+<h1></h1>
+<p>Os teste não paramétricos não serão o nosso foco aqui, mas deixo o nome de cada um e sua equivalência para que vocês estudem futuramente:</p>
+<ul>
+<li>Mann-Whitney</li>
+<li>Wilcoxon</li>
+<li>Kruskal-Wallis</li>
+<li>Teste de Dunn (Procedimento de Bonferroni)</li>
+</ul>
+</section>
+
 <section id="trocando-de-banco-de-dados" class="title-slide slide level1 center">
 <h1>Trocando de banco de dados…</h1>
 
@@ -1527,7 +1538,7 @@ Fernanda Kelly R. Silva | Estatística
 </ul>
 <p>Vamos considerar o nível de 95% de significância.</p>
 </section></section>
-<section id="section-65" class="title-slide slide level1 center">
+<section id="section-66" class="title-slide slide level1 center">
 <h1></h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href=""></a><span class="fu">library</span>(car)</span>
@@ -1568,7 +1579,7 @@ Fernanda Kelly R. Silva | Estatística
 </div>
 </section>
 
-<section id="section-66" class="title-slide slide level1 center">
+<section id="section-67" class="title-slide slide level1 center">
 <h1></h1>
 <p>Logo, ao nível de 95% de significância, <strong>rejeitamos a hipótese nula</strong> (p-value = 0.0003), ou seja, os grupos apresentam não variâncias homogêneas e assim não podemos seguir com o teste t independente.</p>
 <div class="fragment">
@@ -1589,7 +1600,7 @@ Fernanda Kelly R. Silva | Estatística
 
 </section>
 
-<section id="section-67" class="title-slide slide level1 center">
+<section id="section-68" class="title-slide slide level1 center">
 <h1></h1>
 <p>Como violamos o teste de homogeinidade de variâncias, vamos programar com <strong>var.equal=FALSE</strong>, mas uma vez que o pressuposto da homogeneidade de variâncias foi atendido, colocaremos <strong>var.equal=TRUE</strong>.</p>
 <div class="fragment">
@@ -1614,7 +1625,7 @@ sample estimates:
 </div>
 </section>
 
-<section id="section-68" class="title-slide slide level1 center">
+<section id="section-69" class="title-slide slide level1 center">
 <h1></h1>
 <p>Qual é a interpretação dessa saída?</p>
 <div class="fragment">
@@ -1625,7 +1636,7 @@ sample estimates:
 </div>
 </section>
 
-<section id="section-69" class="title-slide slide level1 center">
+<section id="section-70" class="title-slide slide level1 center">
 <h1></h1>
 <p>Mas antes de tudo…</p>
 </section>
@@ -1639,14 +1650,14 @@ sample estimates:
 <h2>paired = TRUE</h2>
 <p>Em algumas situações o par de amostras é constituı́do do mesmo indivı́duo em duas ocasiões diferentes. Essa ocasiação nós denominamos por <strong>pareamento</strong>, em que neste pareamento podemos distingui-lo em três tipos: auto-pareamento, pareamento natural e pareamento artificial.</p>
 </section></section>
-<section id="section-70" class="title-slide slide level1 center">
+<section id="section-71" class="title-slide slide level1 center">
 <h1></h1>
 <ul>
 <li>O auto-pareamento ocorre quando o indivı́duo serve como seu próprio controle, como na situação em que um indivı́duo recebe duas drogas administradas em ocasiões diferentes. Outra situação é a que um tratamento é administrado e as variáveis de interesse são observadas antes e depois do programa. Finalmente, a comparação de dois órgãos no mesmo indivı́duo, como braços, pernas, olhos, narinas, segundo alguma caracterı́stica estudada também constitui um auto-pareamento.</li>
 </ul>
 </section>
 
-<section id="section-71" class="title-slide slide level1 center">
+<section id="section-72" class="title-slide slide level1 center">
 <h1></h1>
 <ul>
 <li><p>O pareamento natural consiste em formar pares tão homogêneos quanto possı́vel, controlando os fatores que possam interferir na resposta, sendo que o pareamento aparece de forma natural. Por exemplo, em experimentos de laboratório pode-se formar pares de cobaias selecionadas da mesma ninhada; em investigações clı́nicas, gêmeos univitelinos são muito usados.</p></li>
@@ -1655,7 +1666,7 @@ sample estimates:
 </section>
 
 <section>
-<section id="section-72" class="title-slide slide level1 center">
+<section id="section-73" class="title-slide slide level1 center">
 <h1></h1>
 <div class="sourceCode" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href=""></a><span class="fu">t.test</span>(x, ...)</span>
 <span id="cb65-2"><a href=""></a></span>
@@ -1674,7 +1685,7 @@ sample estimates:
 <h2>alternative = c(“two.sided”, “less”, “greater”)</h2>
 <p>A hipótese alternativa mais comum - e a mais recomendada, salvo raras exceções - é a de que há uma diferença entre os grupos. Observe que aqui estamos estabelecendo apenas que, caso os grupos não sejam iguais, eles serão diferentes. Não estamos nos comprometendo com o sentido dessa diferença, se o grupo A terá uma média superior ou inferior à do grupo B. No entanto, é possível construirmos hipóteses alternativas que estabeleçam o sentido dessa diferença:</p>
 </section></section>
-<section id="section-73" class="title-slide slide level1 center">
+<section id="section-74" class="title-slide slide level1 center">
 <h1></h1>
 <ul>
 <li><span class="math inline">\(H_{1}\)</span> : média do grupo A &gt; média do grupo B</li>
@@ -1686,7 +1697,7 @@ sample estimates:
 </div>
 </section>
 
-<section id="section-74" class="title-slide slide level1 center">
+<section id="section-75" class="title-slide slide level1 center">
 <h1></h1>
 <div class="sourceCode" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href=""></a><span class="fu">t.test</span>(x, ...)</span>
 <span id="cb66-2"><a href=""></a></span>
@@ -1712,7 +1723,7 @@ sample estimates:
 
 </section>
 
-<section id="section-75" class="title-slide slide level1 center">
+<section id="section-76" class="title-slide slide level1 center">
 <h1></h1>
 <div class="fragment">
 <div class="cell">
@@ -1732,7 +1743,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </section>
 
-<section id="section-76" class="title-slide slide level1 center">
+<section id="section-77" class="title-slide slide level1 center">
 <h1></h1>
 <div class="fragment">
 <div class="cell">
@@ -1758,6 +1769,34 @@ virginica-versicolor 0.652 0.4082273 0.8957727     0</code></pre>
 
 <section id="k-means" class="title-slide slide level1 center">
 <h1>K-Means</h1>
+<p>Tá aí um algoritmo muito falado na área de ciência de dados e, apesar de estar na ‘boca do povo’ há uns 5 anos, seus princípios são bem mais velhos do que isso.</p>
+<p>O K-Means é um algoritmo de aprendizagem não supervisionada. Ele não classifica, mas agrupa vetores de atributos similares, isto é, coloca em um mesmo agrupamento vetores similares, e por este ser computacionalmente simples e funcionar bem na prática, ele é um dos principais e mais usados métodos de agrupamento (DUDA; HART, 1973).</p>
+<p>Só no Google Acadêmico com a pesquisa “K-means” há mais de 8 mil artigos publicados. São artigos com aplicação em diversas áreas e claro que muitos são artigos ‘palpiteros’ que indicam algum tipo de alteração no desenrolar do algoritmo.</p>
+</section>
+
+<section id="section-78" class="title-slide slide level1 center">
+<h1></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href=""></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb71-2"><a href=""></a><span class="fu">ggplot</span>(dados_iris, <span class="fu">aes</span>(Petal.Length, Petal.Width)) <span class="sc">+</span> </span>
+<span id="cb71-3"><a href=""></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col=</span>Species), <span class="at">size=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="Slides_files/figure-revealjs/unnamed-chunk-41-1.png" width="960" class="r-stretch"></section>
+
+<section id="muita-informação-né" class="title-slide slide level1 center">
+<h1>Muita informação, né?</h1>
+
+</section>
+
+<section id="chegamos-ao-fim" class="title-slide slide level1 center">
+<h1>… chegamos ao fim!</h1>
+
+</section>
+
+<section id="section-79" class="title-slide slide level1 center">
+<h1></h1>
+<p>Todo o material vocês encontram <a href="https://github.com/FernandaKelly">aqui</a> e, se tiverem dúvidas, podem entrar em contato comigo através do meu <a href="https://www.fernandakellyrs.com/">site</a> ou <a href="https://www.linkedin.com/in/fernandakellyrs/">linkedin</a>.</p>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>Slides por <a href="https://fernandakellyrs.com">Fernanda Kelly</a>. Slides <a href="https://github.com/FernandaKelly/IntroR_CONABIVE">on GitHub</a>.</p>
