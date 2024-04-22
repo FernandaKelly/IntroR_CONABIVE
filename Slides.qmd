@@ -95,6 +95,7 @@ Ou seja, na sua máquina.
 ::: fragment
 -   No dia a dia, utilizar o R localmente é mais funcional e, para isso, você deve [instalar o R](https://posit.co/download/rstudio-desktop/);
 -   Em relação a IDE RStudio você pode instalar [aqui](https://posit.co/download/rstudio-desktop/).
+- Você pode seguir o tutorial de instalação do R e da IDE RStudio através da didática incrível da [Fernanda Peres](https://fernandafperes.com.br/) no [Youtube](https://youtu.be/WVogdSlk7gY?si=5IdaVHMgisEY3MZG)
 :::
 
 # E porquê usar o R?
